@@ -252,3 +252,11 @@ body.dark-theme .portfolio__item {
     grid-template-columns: 1fr;
   }
 }
+.home__img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid var(--primary-color);
+}
