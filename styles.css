@@ -253,12 +253,12 @@ body.dark-theme .portfolio__item {
   }
 }
 .home__img {
-  width: 220px;          /* Adjust width */
-  height: auto;          /* Auto height keeps aspect ratio */
-  max-width: 100%;       /* Responsive */
-  border-radius: 50%;    /* Makes it circular */
-  object-fit: cover;     
-  margin-bottom: 1.5rem;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.5rem auto;
+  display: block;
   border: 3px solid var(--primary-color);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
