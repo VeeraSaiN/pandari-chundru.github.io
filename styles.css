@@ -38,7 +38,8 @@ body.dark-theme {
 }
 
 body.dark-theme .change-theme {
-  color: var(--text-dark);
+  background-color: #121212;
+  color: #ffffff;;
 }
 
 /* Navigation */
