@@ -315,15 +315,7 @@ body.dark-theme .portfolio__item {
 .contact__form button:hover {
   background: var(--accent-color);
 }
-.home__content a {
-  text-decoration: none;
+.highlight {
   color: var(--primary-color);
-}
-
-.phone {
-  color: var(--text-light);
-}
-
-body.dark-theme .phone {
-  color: var(--text-dark);
+  text-decoration: none;
 }
