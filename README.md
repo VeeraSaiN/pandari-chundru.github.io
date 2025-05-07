@@ -3,7 +3,7 @@
 A personal portfolio website showcasing skills, projects, and contact information for Pandari Chundru, a Data Enthusiast & Cloud Engineer.
 
 ## Live Site
-View the portfolio live at [https://pandari-chundru.github.io](https://pandari-chundru.github.io).
+View the portfolio live at https://veerasain.github.io/pandari-chundru.github.io/
 
 ## Features
 - Responsive design with dark/light theme toggle
