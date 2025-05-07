@@ -25,13 +25,9 @@ const themeButton = document.getElementById('theme-button');
 const darkTheme = 'dark-theme';
 const iconTheme = 'bx-sun';
 
-// Get previously selected theme and icon
+// Get stored preferences
 const selectedTheme = localStorage.getItem('selected-theme');
 const selectedIcon = localStorage.getItem('selected-icon');
-
-// Get current theme/icon
-const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
-const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-sun' : 'bx-moon';
 
 // Apply saved theme on load
 if (selectedTheme) {
@@ -39,12 +35,12 @@ if (selectedTheme) {
   themeButton.classList[selectedIcon === 'bx-sun' ? 'add' : 'remove'](iconTheme);
 }
 
-// Toggle theme and icon
+// Toggle on click
 themeButton.addEventListener('click', () => {
   document.body.classList.toggle(darkTheme);
   themeButton.classList.toggle(iconTheme);
 
-  // Save preference
-  localStorage.setItem('selected-theme', getCurrentTheme());
-  localStorage.setItem('selected-icon', getCurrentIcon());
+  // Save current preferences
+  localStorage.setItem('selected-theme', document.body.classList.contains(darkTheme) ? 'dark' : 'light');
+  localStorage.setItem('selected-icon', themeButton.classList.contains(iconTheme) ? 'bx-sun' : 'bx-moon');
 });
