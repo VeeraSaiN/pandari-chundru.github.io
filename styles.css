@@ -39,9 +39,9 @@ body.dark-theme {
   transition: color 0.3s ease;
 }
 
-body.dark-theme .change-theme {
+body.dark-theme {
   background-color: #121212;
-  color: #ffffff;;
+  color: #ffffff;
 }
 
 /* Navigation */
