@@ -23,17 +23,28 @@ if (navLinks) {
 // Dark Theme Toggle
 const themeButton = document.getElementById('theme-button');
 const darkTheme = 'dark-theme';
+const iconTheme = 'bx-sun';
+
+// Get previously selected theme and icon
 const selectedTheme = localStorage.getItem('selected-theme');
+const selectedIcon = localStorage.getItem('selected-icon');
 
-if (themeButton) {
-  if (selectedTheme) {
-    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
-    themeButton.classList[selectedTheme === 'dark' ? 'add' : 'remove']('bx-sun');
-  }
+// Get current theme/icon
+const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-sun' : 'bx-moon';
 
-  themeButton.addEventListener('click', () => {
-    document.body.classList.toggle(darkTheme);
-    themeButton.classList.toggle('bx-sun');
-    localStorage.setItem('selected-theme', document.body.classList.contains(darkTheme) ? 'dark' : 'light');
-  });
+// Apply saved theme on load
+if (selectedTheme) {
+  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+  themeButton.classList[selectedIcon === 'bx-sun' ? 'add' : 'remove'](iconTheme);
 }
+
+// Toggle theme and icon
+themeButton.addEventListener('click', () => {
+  document.body.classList.toggle(darkTheme);
+  themeButton.classList.toggle(iconTheme);
+
+  // Save preference
+  localStorage.setItem('selected-theme', getCurrentTheme());
+  localStorage.setItem('selected-icon', getCurrentIcon());
+});
