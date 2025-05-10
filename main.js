@@ -31,8 +31,13 @@ const selectedIcon = localStorage.getItem('selected-icon');
 
 // Apply saved theme on load
 if (selectedTheme) {
-  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
-  themeButton.classList[selectedIcon === 'bx-sun' ? 'add' : 'remove'](iconTheme);
+  selectedTheme === 'dark' 
+    ? document.body.classList.add(darkTheme)
+    : document.body.classList.remove(darkTheme);
+  
+  selectedIcon === 'bx-sun' 
+    ? themeButton.classList.add(iconTheme)
+    : themeButton.classList.remove(iconTheme);
 }
 
 // Toggle on click
