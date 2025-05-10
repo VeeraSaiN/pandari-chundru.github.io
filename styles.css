@@ -469,3 +469,58 @@ body.dark-theme .portfolio__item:hover, body.dark-theme .portfolio__item:focus-w
 .timeline li {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
+/* Enhanced Hover Effects for Buttons */
+.button {
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.button:hover, .button:focus {
+  transform: scale(1.05) translateY(-3px); /* Scale and lift effect */
+  background: var(--accent-color);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+body.dark-theme .button:hover, body.dark-theme .button:focus {
+  box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.2);
+}
+
+/* Hover Effects for Containers */
+.container-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.container-box:hover {
+  transform: translateY(-5px); /* Lift effect */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+body.dark-theme .container-box:hover {
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+/* Hover Effects for Timeline Items */
+.timeline li {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.timeline li:hover {
+  transform: translateX(10px); /* Slide right on hover */
+  color: var(--primary-color);
+}
+body.dark-theme .timeline li:hover {
+  color: var(--primary-color);
+}
+
+/* Hover Effects for Contact Form Inputs */
+.contact__form input,
+.contact__form textarea,
+.contact__form button {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.contact__form input:hover,
+.contact__form textarea:hover,
+.contact__form input:focus,
+.contact__form textarea:focus {
+  transform: scale(1.02); /* Subtle scale effect */
+  border-color: var(--primary-color);
+}
+
+/* Smooth AOS Transitions */
+[data-aos] {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
