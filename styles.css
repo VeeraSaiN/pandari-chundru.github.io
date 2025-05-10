@@ -237,6 +237,7 @@ body.dark-theme .profile-image-container:hover {
   display: flex;
   justify-content: center;
   gap: 2rem;
+  margin-top: 3 rem;
 }
 .social__icon {
   background: var(--primary-color);
@@ -375,7 +376,7 @@ body.dark-theme .portfolio__item {
   }
   .social__links {
     flex-direction: row;
-    gap: 1.5rem;
+    gap: 2rem;
     flex-wrap: wrap;
   }
   .social__icon {
