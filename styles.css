@@ -562,3 +562,60 @@ body.dark-theme .internship-details li {
 body.dark-theme .internship-details li:hover {
   color: var(--primary-color);
 }
+/* Home Section */
+.home__content {
+  padding: 2rem 5%;
+}
+
+/* Intro Layout (Text Left, Image Right) */
+.home__intro {
+  display: flex;
+  flex-direction: column; /* Stack on mobile */
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Adjust Container Box for Home Section */
+.home__content .container-box {
+  padding: 2rem; /* Match padding from other sections */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+body.dark-theme .home__content .container-box {
+  background: #1e1e1e;
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.08);
+}
+.home__content .container-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+body.dark-theme .home__content .container-box:hover {
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+/* Responsive Layout */
+@media (min-width: 769px) {
+  .home__intro {
+    flex-direction: row; /* Side-by-side on desktop */
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .home__text {
+    flex: 1;
+    text-align: left;
+  }
+  .profile-image-container {
+    flex: 0 0 auto;
+  }
+  .home__buttons {
+    justify-content: flex-start; /* Align buttons to the left on desktop */
+  }
+  .social__links {
+    margin-top: 4rem;
+    justify-content: flex-start; /* Align with buttons on desktop */
+  }
+}
