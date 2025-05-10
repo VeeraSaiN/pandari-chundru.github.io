@@ -31,8 +31,8 @@ body.dark-theme {
   color: var(--text-dark);
 }
 
-/* Theme Toggle */
-.change-theme {
+/* Theme Toggle Button */
+.theme-toggle {
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
@@ -40,19 +40,25 @@ body.dark-theme {
   height: 48px;
   background: var(--primary-color);
   color: #fff;
+  border: none;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   cursor: pointer;
   z-index: 999;
-  transition: background 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, background 0.3s ease;
 }
-.change-theme:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--accent-color);
+.theme-toggle:hover {
+  background: var(--accent-color);
+  transform: scale(1.1);
+}
+
+/* Optional fade transition when toggling theme */
+body.fade-theme {
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Header and Navigation */
@@ -319,32 +325,4 @@ body.dark-theme .portfolio__item {
     grid-template-columns: 1fr;
   }
 }
-/* Theme Toggle Button */
-.theme-toggle {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  width: 48px;
-  height: 48px;
-  background: var(--primary-color);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-  cursor: pointer;
-  z-index: 999;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, background 0.3s ease;
-}
-.theme-toggle:hover {
-  background: var(--accent-color);
-  transform: scale(1.1);
-}
 
-/* Optional fade transition when toggling theme */
-body.fade-theme {
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
