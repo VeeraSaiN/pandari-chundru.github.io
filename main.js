@@ -24,6 +24,28 @@ const showMenu = (toggleId, navId) => {
 };
 showMenu('nav-toggle', 'nav-menu');
 
+// Highlight Active Navigation Link on Scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav__link');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (window.scrollY >= sectionTop - sectionHeight / 3) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href').includes(current)) {
+      link.classList.add('active');
+    }
+  });
+});
+
 // Close mobile nav on link click
 document.querySelectorAll('.nav__link').forEach(link => {
   link.addEventListener('click', () => {
@@ -57,4 +79,18 @@ themeToggle.addEventListener('click', () => {
 
   themeIcon.classList.replace(isDark ? 'bx-moon' : 'bx-sun', isDark ? 'bx-sun' : 'bx-moon');
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+// Show/Hide Back to Top Button
+const backToTopButton = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTopButton.classList.add('show');
+  } else {
+    backToTopButton.classList.remove('show');
+  }
+});
+
+// Scroll to Top on Click
+backToTopButton.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
