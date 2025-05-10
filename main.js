@@ -3,10 +3,22 @@
 // ====================
 const showMenu = (toggleId, navId) => {
   const toggle = document.getElementById(toggleId),
-        nav = document.getElementById(navId);
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('show');
+        navList = document.querySelector(`#${navId} .nav__list`);
+  if (toggle && navList) {
+    const toggleMenu = (e) => {
+      e.preventDefault();
+      navList.classList.toggle('show');
+      const isExpanded = navList.classList.contains('show');
+      toggle.setAttribute('aria-expanded', isExpanded);
+    };
+    toggle.addEventListener('click', toggleMenu);
+    toggle.addEventListener('touchstart', toggleMenu);
+    // Add keyboard support
+    toggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu(e);
+      }
     });
   }
 };
@@ -15,7 +27,8 @@ showMenu('nav-toggle', 'nav-menu');
 // Close mobile nav on link click
 document.querySelectorAll('.nav__link').forEach(link => {
   link.addEventListener('click', () => {
-    document.getElementById('nav-menu').classList.remove('show');
+    document.querySelector('#nav-menu .nav__list').classList.remove('show');
+    document.getElementById('nav-toggle').setAttribute('aria-expanded', 'false');
   });
 });
 
