@@ -384,3 +384,36 @@ body.dark-theme .portfolio__item {
     font-size: 1rem;
   }
 }
+/* Hover Animations for Links */
+.nav__link, .cert__link {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.nav__link:hover, .nav__link:focus, .cert__link:hover, .cert__link:focus {
+  transform: scale(1.05); /* Slight scale effect on hover/focus */
+}
+
+/* Enhance Social Icons Animation */
+.social__icon {
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.social__icon:hover, .social__icon:focus {
+  transform: scale(1.1) rotate(5deg); /* Scale and slight rotation */
+  background: var(--accent-color);
+}
+
+/* Enhance Portfolio Items Animation */
+.portfolio__item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.portfolio__item:hover, .portfolio__item:focus-within {
+  transform: translateY(-5px) scale(1.02); /* Lift and slight scale */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+body.dark-theme .portfolio__item:hover, body.dark-theme .portfolio__item:focus-within {
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+/* Smooth AOS Animation for Lists */
+.timeline li {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
