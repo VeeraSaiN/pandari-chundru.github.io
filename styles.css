@@ -170,8 +170,8 @@ body.dark-theme .nav__link {
 }
 
 .social__icon {
-  background: #ffffff; /* white background */
-  color: var(--primary-color); /* blue icon */
+  background: var(--primary-color);   /* Match button color */
+  color: #ffffff;                     /* White icon inside */
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -183,12 +183,11 @@ body.dark-theme .nav__link {
   transition: background 0.3s ease, transform 0.3s ease;
   opacity: 0;
   animation: fadeInUp 0.8s ease forwards;
-  border: 2px solid var(--primary-color);
+  border: none;
 }
 
 .social__icon:hover {
-  background: var(--primary-color);
-  color: #ffffff;
+  background: var(--accent-color);   /* Slightly darker blue on hover */
   transform: scale(1.1);
 }
 
