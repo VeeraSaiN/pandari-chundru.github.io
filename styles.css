@@ -347,22 +347,24 @@ body.dark-theme .portfolio__item {
 }
 .cert__link {
   color: var(--primary-color);
-  text-decoration: none;
+  text-decoration: none; /* Remove underline */
   font-size: clamp(0.9rem, 2.5vw, 1rem);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   transition: color 0.3s ease;
 }
+.cert__link:visited {
+  color: var(--primary-color); /* Ensure visited links keep the same color */
+  text-decoration: none; /* Remove underline for visited links */
+}
 .cert__link:hover, .cert__link:focus {
   color: var(--accent-color);
+  text-decoration: none; /* Ensure no underline on hover/focus */
 }
 .cert__link:focus {
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
-}
-.link-icon {
-  font-size: 1rem;
 }
 
 /* Responsive Adjustments */
