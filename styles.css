@@ -256,18 +256,26 @@ body.dark-theme .nav__link {
 }
 
 .skills__categories {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  background: var(--bg-light);
+  background: var(--primary-color);
+  color: white;
+  padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   line-height: 1.8;
   font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.skills__categories p {
+  margin-bottom: 0.8rem;
+}
+
+.skills__categories strong {
+  color: #fff;
 }
 
 body.dark-theme .skills__categories {
-  background: var(--bg-dark);
+  background: var(--accent-color);
+  color: #fff;
 }
 
 /* Timeline */
