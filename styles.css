@@ -136,24 +136,44 @@ body.dark-theme .container-box {
 
 /* Home Section */
 .home__content {
+  padding: 2rem 5%;
   text-align: center;
-  padding: 4rem 2rem;
 }
-.home__content h1 {
-  font-size: 3rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
+
+/* Intro Layout (Text Left, Image Right) */
+.home__intro {
+  display: flex;
+  flex-direction: column; /* Stack on mobile */
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
-/* Profile Image Container for Square Shape and Background */
+
+/* Text Styling */
+.home__text h1 {
+  font-size: clamp(1.5rem, 6vw, 3rem);
+  line-height: 1.4;
+  color: var(--text-light);
+  text-align: left; /* Align text left */
+}
+body.dark-theme .home__text h1 {
+  color: var(--text-dark);
+}
+
+/* Highlight Pandari in Blue */
+.highlight-name {
+  color: var(--primary-color); /* Blue color for Pandari */
+}
+
+/* Profile Image Container */
 .profile-image-container {
   position: relative;
   width: clamp(10rem, 25vw, 12rem);
   height: clamp(10rem, 25vw, 12rem);
-  margin: 0 auto 1.5rem;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); /* Keep gradient background */
-  padding: 0.3rem; /* Space for the gradient border effect */
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  padding: 0.3rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 0; /* Square shape */
+  border-radius: 0; /* Square shape from previous change */
 }
 
 /* Profile Image */
@@ -162,27 +182,38 @@ body.dark-theme .container-box {
   height: 100%;
   object-fit: cover;
   display: block;
-  border: none; /* Keep border removed */
-  border-radius: 0; /* Square shape */
+  border: none;
+  border-radius: 0;
 }
 
 /* Hover Effects */
 .profile-image-container:hover {
-  transform: scale(1.05); /* Subtle scale on hover */
-  box-shadow: 0 0 1.5rem rgba(34, 68, 255, 0.5); /* Glowing shadow */
+  transform: scale(1.05);
+  box-shadow: 0 0 1.5rem rgba(34, 68, 255, 0.5);
 }
 body.dark-theme .profile-image-container:hover {
-  box-shadow: 0 0 1.5rem rgba(34, 68, 255, 0.7); /* Dark mode glow */
+  box-shadow: 0 0 1.5rem rgba(34, 68, 255, 0.7);
 }
-.home__buttons {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-.home__buttons + .social__links {
-  margin-top: 2.5rem;
+
+/* Responsive Layout */
+@media (min-width: 769px) {
+  .home__intro {
+    flex-direction: row; /* Side-by-side on desktop */
+    justify-content: space-between;
+    align-items: center;
+    max-width: 75rem; /* 1200px */
+    margin: 0 auto 2rem;
+  }
+  .home__text {
+    flex: 1;
+    text-align: left;
+  }
+  .profile-image-container {
+    flex: 0 0 auto;
+  }
+  .home__buttons {
+    justify-content: flex-start; /* Align buttons to the left on desktop */
+  }
 }
 
 /* Buttons */
