@@ -237,7 +237,7 @@ body.dark-theme .profile-image-container:hover {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-top: 3 rem;
+  margin-top: 3rem;
 }
 .social__icon {
   background: var(--primary-color);
