@@ -368,3 +368,15 @@ body.dark-theme .portfolio__item {
     grid-template-columns: 1fr;
   }
 }
+.container-box {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+body.dark-theme .container-box {
+  background: #1e1e1e;
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.08);
+}
