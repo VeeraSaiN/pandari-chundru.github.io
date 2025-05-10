@@ -77,7 +77,7 @@ body.dark-theme .header {
 .nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align протикоцентрировать;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -102,6 +102,10 @@ body.dark-theme .nav__link {
   display: none;
   font-size: 1.5rem;
   cursor: pointer;
+}
+.nav__toggle i {
+  font-size: 1.5rem;
+  line-height: 1; /* Prevent alignment issues */
 }
 
 /* Section Layout */
@@ -285,6 +289,10 @@ body.dark-theme .portfolio__item {
 @media (max-width: 768px) {
   .nav__toggle {
     display: block;
+    color: var(--text-light); /* Ensure icon visibility */
+  }
+  body.dark-theme .nav__toggle {
+    color: var(--text-dark); /* Match dark theme */
   }
   .nav__list {
     display: none;
@@ -296,9 +304,14 @@ body.dark-theme .portfolio__item {
     background: var(--bg-light);
     padding: 1rem;
     z-index: 1000;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+    transform: translateY(-10px);
+    opacity: 0;
   }
   .nav__list.show {
     display: flex;
+    transform: translateY(0);
+    opacity: 1;
   }
   body.dark-theme .nav__list {
     background: var(--bg-dark);
@@ -325,4 +338,3 @@ body.dark-theme .portfolio__item {
     grid-template-columns: 1fr;
   }
 }
-
