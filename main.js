@@ -1,4 +1,6 @@
-// Toggle navigation menu
+// ====================
+// Responsive Navigation Toggle
+// ====================
 const showMenu = (toggleId, navId) => {
   const toggle = document.getElementById(toggleId),
         nav = document.getElementById(navId);
@@ -10,42 +12,36 @@ const showMenu = (toggleId, navId) => {
 };
 showMenu('nav-toggle', 'nav-menu');
 
-// Close nav on link click
-const navLinks = document.querySelectorAll('.nav__link');
-if (navLinks) {
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      document.getElementById('nav-menu').classList.remove('show');
-    });
+// Close mobile nav on link click
+document.querySelectorAll('.nav__link').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('nav-menu').classList.remove('show');
   });
+});
+
+// ====================
+// Dark/Light Theme Toggle
+// ====================
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+const darkClass = 'dark-theme';
+
+// Load preference
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add(darkClass);
+  themeIcon.classList.replace('bx-moon', 'bx-sun');
 }
 
-// Dark Theme Toggle
-const themeButton = document.getElementById('theme-button');
-const darkTheme = 'dark-theme';
-const iconTheme = 'bx-sun';
+// Toggle theme on click with fade
+themeToggle.addEventListener('click', () => {
+  document.body.classList.add('fade-theme');
+  setTimeout(() => {
+    document.body.classList.remove('fade-theme');
+  }, 400);
 
-// Get stored preferences
-const selectedTheme = localStorage.getItem('selected-theme');
-const selectedIcon = localStorage.getItem('selected-icon');
+  document.body.classList.toggle(darkClass);
+  const isDark = document.body.classList.contains(darkClass);
 
-// Apply saved theme on load
-if (selectedTheme) {
-  selectedTheme === 'dark' 
-    ? document.body.classList.add(darkTheme)
-    : document.body.classList.remove(darkTheme);
-  
-  selectedIcon === 'bx-sun' 
-    ? themeButton.classList.add(iconTheme)
-    : themeButton.classList.remove(iconTheme);
-}
-
-// Toggle on click
-themeButton.addEventListener('click', () => {
-  document.body.classList.toggle(darkTheme);
-  themeButton.classList.toggle(iconTheme);
-
-  // Save current preferences
-  localStorage.setItem('selected-theme', document.body.classList.contains(darkTheme) ? 'dark' : 'light');
-  localStorage.setItem('selected-icon', themeButton.classList.contains(iconTheme) ? 'bx-sun' : 'bx-moon');
+  themeIcon.classList.replace(isDark ? 'bx-moon' : 'bx-sun', isDark ? 'bx-sun' : 'bx-moon');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
