@@ -537,26 +537,28 @@ body.dark-theme .timeline li:hover {
 .internship-details {
   margin-top: 0.5rem;
   padding-left: 1.5rem;
-  list-style-type: disc; /* Use disc bullets for nested list */
+  list-style: none; /* Remove default black bullets */
 }
 .internship-details li {
   margin-bottom: 0.5rem;
-  font-size: clamp(0.9rem, 2.5vw, 1rem); /* Match font size with other sections */
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
   color: var(--text-light);
+  position: relative;
 }
 body.dark-theme .internship-details li {
   color: var(--text-dark);
 }
+.internship-details li::before {
+  content: "•"; /* Add custom bullet to match .timeline */
+  position: absolute;
+  left: -1.5rem;
+  color: var(--primary-color);
+  font-size: 1rem;
+}
 .internship-details li:hover {
-  transform: translateX(10px); /* Match hover effect from .timeline li */
+  transform: translateX(10px);
   color: var(--primary-color);
 }
 body.dark-theme .internship-details li:hover {
   color: var(--primary-color);
-}
-
-/* Ensure proper spacing for internship links */
-.timeline li .cert__link {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
 }
