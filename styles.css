@@ -671,3 +671,6 @@ body.dark-theme .nav__link.active {
   background: var(--accent-color);
   transform: scale(1.1);
 }
+<footer style="text-align:center; padding:20px; font-size:14px; color:#666;">
+  © 2025 Pandari Chundru
+</footer>
