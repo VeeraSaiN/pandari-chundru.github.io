@@ -619,15 +619,17 @@ body.dark-theme .home__content .container-box:hover {
     justify-content: flex-start; /* Align with buttons on desktop */
   }
 }
-/* Hero Background for Home Section */
-.home.section {
-  background: linear-gradient(135deg, rgba(34, 68, 255, 0.1), rgba(255, 255, 255, 0.1)); /* Subtle gradient */
+/* Section Layout with Hero Background */
+.section {
   padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(34, 68, 255, 0.1), rgba(255, 255, 255, 0.1)); /* Subtle gradient for all sections */
   position: relative;
   overflow: hidden;
 }
-body.dark-theme .home.section {
-  background: linear-gradient(135deg, rgba(34, 68, 255, 0.2), rgba(18, 18, 18, 0.2));
+body.dark-theme .section {
+  background: linear-gradient(135deg, rgba(34, 68, 255, 0.2), rgba(18, 18, 18, 0.2)); /* Dark theme variant */
 }
 /* Active Navigation Link Highlight */
 .nav__link.active {
