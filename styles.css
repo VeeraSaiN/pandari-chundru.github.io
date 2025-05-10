@@ -170,8 +170,8 @@ body.dark-theme .nav__link {
 }
 
 .social__icon {
-  background: #14b8c4;
-  color: white;
+  background: #ffffff; /* white background */
+  color: var(--primary-color); /* blue icon */
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -183,10 +183,12 @@ body.dark-theme .nav__link {
   transition: background 0.3s ease, transform 0.3s ease;
   opacity: 0;
   animation: fadeInUp 0.8s ease forwards;
+  border: 2px solid var(--primary-color);
 }
 
 .social__icon:hover {
-  background: #0e7490;
+  background: var(--primary-color);
+  color: #ffffff;
   transform: scale(1.1);
 }
 
