@@ -349,14 +349,14 @@ body.dark-theme .portfolio__item {
 
   .social__links {
     flex-direction: row;
-    gap: 1.5rem;
+    gap: 2.5rem;
     flex-wrap: wrap;
   }
 
   .social__icon {
     width: 50px;
     height: 50px;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
 
   .home__content h1 {
