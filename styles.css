@@ -671,18 +671,37 @@ body.dark-theme .nav__link.active {
   background: var(--accent-color);
   transform: scale(1.1);
 }
-/* Contact Section with Map Background */
+/* Contact Section with Map Background and Overlay */
 .contact-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  background-image: url('Map.png'); /* Ensure image is in root folder */
+  background-image: url('Map.png'); /* Image in root folder */
   background-size: cover;
   background-position: center;
   border-radius: 12px;
   padding: 2rem;
   color: var(--text-dark);
-  backdrop-filter: blur(3px);
+  overflow: hidden;
+}
+
+.contact-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.7); /* Light mode overlay */
+  z-index: 0;
+}
+body.dark-theme .contact-container::before {
+  background-color: rgba(0, 0, 0, 0.5); /* Darker overlay for dark mode */
+}
+
+/* Ensure content is above overlay */
+.contact-info,
+.contact__form {
+  position: relative;
+  z-index: 1;
 }
 
 /* Contact Info Box */
@@ -699,6 +718,29 @@ body.dark-theme .contact-info {
   color: var(--text-dark);
 }
 
+/* Force label color */
+.contact-info strong {
+  color: #000;
+}
+body.dark-theme .contact-info strong {
+  color: #fff;
+}
+
+/* Styled Contact Links */
+.contact-link {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.contact-link:hover,
+.contact-link:focus {
+  color: var(--accent-color);
+  transform: scale(1.05);
+  text-decoration: underline;
+}
+
 /* Contact Form Box */
 .contact__form {
   flex: 2;
@@ -710,7 +752,7 @@ body.dark-theme .contact__form {
   background: rgba(18, 18, 18, 0.85);
 }
 
-/* Input & Textarea */
+/* Form Fields */
 .contact__form input,
 .contact__form textarea {
   background: #fff;
@@ -727,7 +769,7 @@ body.dark-theme .contact__form textarea {
   border: 1px solid #444;
 }
 
-/* Submit Button */
+/* Form Button */
 .contact__form button {
   background: var(--primary-color);
   color: var(--text-dark);
@@ -743,28 +785,6 @@ body.dark-theme .contact__form textarea {
   transform: scale(1.05);
 }
 
-/* Contact Info Text Styling */
-.contact-info p {
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-/* Styled Contact Links Like Others */
-.contact-link {
-  color: var(--primary-color);
-  font-weight: 500;
-  text-decoration: none;
-  display: inline-block;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-.contact-link:hover,
-.contact-link:focus {
-  color: var(--accent-color);
-  transform: scale(1.05);
-  text-decoration: underline;
-}
-
 /* Responsive Layout */
 @media (min-width: 768px) {
   .contact-container {
@@ -778,6 +798,7 @@ body.dark-theme .contact__form textarea {
     width: 48%;
   }
 }
+
 
 
 <footer style="text-align:center; padding:20px; font-size:14px; color:#666;">
