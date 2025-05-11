@@ -676,7 +676,7 @@ body.dark-theme .nav__link.active {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  background-image: url('Map.png'); /* Image in root folder */
+  background-image: url('Map.png'); /* Ensure image is in root folder */
   background-size: cover;
   background-position: center;
   border-radius: 12px;
@@ -685,6 +685,7 @@ body.dark-theme .nav__link.active {
   backdrop-filter: blur(3px);
 }
 
+/* Contact Info Box */
 .contact-info {
   flex: 1;
   background: rgba(255, 255, 255, 0.85);
@@ -698,15 +699,7 @@ body.dark-theme .contact-info {
   color: var(--text-dark);
 }
 
-.contact-info a {
-  color: var(--primary-color);
-  text-decoration: none;
-}
-.contact-info a:hover {
-  color: var(--accent-color);
-}
-
-/* Style the Form */
+/* Contact Form Box */
 .contact__form {
   flex: 2;
   background: rgba(255, 255, 255, 0.85);
@@ -717,17 +710,59 @@ body.dark-theme .contact__form {
   background: rgba(18, 18, 18, 0.85);
 }
 
+/* Input & Textarea */
 .contact__form input,
 .contact__form textarea {
   background: #fff;
   border: 1px solid #ccc;
   color: #000;
+  padding: 0.75rem;
+  border-radius: 5px;
+  font-family: var(--font-family);
 }
 body.dark-theme .contact__form input,
 body.dark-theme .contact__form textarea {
   background: #2a2a2a;
   color: #fff;
   border: 1px solid #444;
+}
+
+/* Submit Button */
+.contact__form button {
+  background: var(--primary-color);
+  color: var(--text-dark);
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.contact__form button:hover {
+  background: var(--accent-color);
+  transform: scale(1.05);
+}
+
+/* Contact Info Text Styling */
+.contact-info p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Styled Contact Links Like Others */
+.contact-link {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.contact-link:hover,
+.contact-link:focus {
+  color: var(--accent-color);
+  transform: scale(1.05);
+  text-decoration: underline;
 }
 
 /* Responsive Layout */
@@ -743,6 +778,7 @@ body.dark-theme .contact__form textarea {
     width: 48%;
   }
 }
+
 
 <footer style="text-align:center; padding:20px; font-size:14px; color:#666;">
   © 2025 Pandari Chundru
