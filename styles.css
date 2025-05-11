@@ -677,27 +677,26 @@ body.dark-theme .nav__link.active {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  background-image: url('Map.png'); /* Image in root folder */
-  background-size: cover;
-  background-position: center;
   border-radius: 12px;
   padding: 2rem;
   color: var(--text-dark);
   overflow: hidden;
 }
 
+/* Add background map image via ::before */
 .contact-container::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.7); /* Light mode overlay */
+  background-image: url('Map.png'); /* Ensure it's in the root folder */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25; /* Adjust for visibility */
   z-index: 0;
-}
-body.dark-theme .contact-container::before {
-  background-color: rgba(0, 0, 0, 0.5); /* Darker overlay for dark mode */
+  filter: blur(1px);
 }
 
-/* Ensure content is above overlay */
+/* Ensure content is on top of map */
 .contact-info,
 .contact__form {
   position: relative;
@@ -718,7 +717,7 @@ body.dark-theme .contact-info {
   color: var(--text-dark);
 }
 
-/* Force label color */
+/* Force label color for "Address:", "Phone:", etc. */
 .contact-info strong {
   color: #000;
 }
@@ -726,7 +725,7 @@ body.dark-theme .contact-info strong {
   color: #fff;
 }
 
-/* Styled Contact Links */
+/* Styled Contact Links (blue with hover animation) */
 .contact-link {
   color: var(--primary-color);
   font-weight: 500;
@@ -798,6 +797,7 @@ body.dark-theme .contact__form textarea {
     width: 48%;
   }
 }
+
 
 
 
