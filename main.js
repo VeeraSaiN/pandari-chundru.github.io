@@ -94,3 +94,26 @@ window.addEventListener('scroll', () => {
 backToTopButton.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+<script>
+  const swiper = new Swiper('.techSwiper', {
+    loop: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+    slidesPerView: 3,
+    spaceBetween: 30,
+    breakpoints: {
+      640: {
+        slidesPerView: 4,
+      },
+      768: {
+        slidesPerView: 5,
+      },
+      1024: {
+        slidesPerView: 6,
+      },
+    },
+  });
+</script>
+
