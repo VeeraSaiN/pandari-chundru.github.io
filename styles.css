@@ -718,6 +718,17 @@ body.dark-theme .theme-text {
     padding: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
+  body.dark-theme .nav__list {
+    background-color: #1e1e1e;
+  }
+
+  body.dark-theme .nav__link {
+    color: #fff;
+  }
+}
+body.dark-theme .nav__link:hover {
+  color: var(--primary-color);
+}
 
   .nav--visible .nav__list {
     display: flex;
@@ -765,3 +776,5 @@ body.dark-theme .footer {
 .section:last-of-type {
   padding-bottom: 3rem;
 }
+
+
