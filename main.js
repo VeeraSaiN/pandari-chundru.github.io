@@ -94,5 +94,66 @@ window.addEventListener('scroll', () => {
 backToTopButton.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+// Particle Effect
+document.addEventListener('DOMContentLoaded', () => {
+  const particleBg = document.getElementById('particle-bg');
+  if (!particleBg) return;
 
+  const particles = [];
+  const numParticles = 100; // Number of particles
+
+  // Create particles
+  for (let i = 0; i < numParticles; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.position = 'absolute';
+    particle.style.background = 'rgba(255, 255, 255, 0.8)';
+    particle.style.borderRadius = '50%';
+    particle.style.width = '2px';
+    particle.style.height = '2px';
+    particleBg.appendChild(particle);
+    particles.push({
+      element: particle,
+      angle: Math.random() * Math.PI * 2, // Random angle in radians
+      distance: 0, // Distance from center
+      speed: Math.random() * 2 + 1, // Random speed between 1 and 3
+    });
+  }
+
+  // Animate particles
+  function animateParticles() {
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+
+    particles.forEach(p => {
+      p.distance += p.speed; // Move particle outward
+      const x = centerX + Math.cos(p.angle) * p.distance;
+      const y = centerY + Math.sin(p.angle) * p.distance;
+
+      // Update particle position
+      p.element.style.left = `${x}px`;
+      p.element.style.top = `${y}px`;
+      p.element.style.opacity = 1 - p.distance / 500; // Fade out as it moves farther
+
+      // Reset particle if it moves too far
+      if (p.distance > 500 || x < 0 || x > window.innerWidth || y < 0 || y > window.innerHeight) {
+        p.distance = 0;
+        p.angle = Math.random() * Math.PI * 2;
+        p.speed = Math.random() * 2 + 1;
+      }
+    });
+
+    requestAnimationFrame(animateParticles);
+  }
+
+  // Start animation
+  animateParticles();
+
+  // Update particle positions on window resize
+  window.addEventListener('resize', () => {
+    particles.forEach(p => {
+      p.distance = 0; // Reset distance to center on resize
+    });
+  });
+});
 
