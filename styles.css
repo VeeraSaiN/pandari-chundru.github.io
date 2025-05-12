@@ -216,12 +216,12 @@ body.dark-theme .container-box:hover {
 
 /* Home Section */
 .home__content {
-  padding: 3rem 5%;
+  padding: 2rem 5%;
   text-align: center;
 }
 
 .home__content .container-box {
-  max-width: 1500px; /* or 1000px for even more width */
+  max-width: 800px; /* or 1000px for even more width */
   margin: 0 auto;
   padding: 3rem;
   background: #fff;
