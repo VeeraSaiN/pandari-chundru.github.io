@@ -1,17 +1,17 @@
 // ====================
-// Responsive Navigation Toggle
+// Responsive Navigation Toggle & Accessibility
 // ====================
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('nav-toggle');
   const navList = document.querySelector('#nav-menu .nav__list');
 
-  if (toggle && navList) {
-    const toggleMenu = () => {
-      navList.classList.toggle('nav--visible');
-      const isExpanded = navList.classList.contains('nav--visible');
-      toggle.setAttribute('aria-expanded', isExpanded);
-    };
+  const toggleMenu = () => {
+    navList.classList.toggle('nav--visible');
+    const isExpanded = navList.classList.contains('nav--visible');
+    toggle.setAttribute('aria-expanded', isExpanded);
+  };
 
+  if (toggle && navList) {
     toggle.addEventListener('click', toggleMenu);
     toggle.addEventListener('touchstart', toggleMenu);
     toggle.addEventListener('keydown', (e) => {
@@ -20,15 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleMenu();
       }
     });
-  }
 
-  // Close mobile nav on link click
-  document.querySelectorAll('.nav__link').forEach(link => {
-    link.addEventListener('click', () => {
-      navList.classList.remove('nav--visible');
-      toggle.setAttribute('aria-expanded', 'false');
+    // Close mobile nav on any nav link click
+    document.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('nav--visible');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
     });
-  });
+  }
 
   // ====================
   // Highlight Active Navigation Link on Scroll
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ====================
-// Dark/Light Theme Toggle
+// Theme Toggle
 // ====================
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
