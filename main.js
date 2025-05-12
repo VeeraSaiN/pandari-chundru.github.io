@@ -275,3 +275,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   draw();
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const name = "Pandari Chundru";
+  const typedName = document.getElementById("typed-name");
+  let i = 0;
+
+  function typeLetter() {
+    if (i < name.length) {
+      typedName.textContent += name.charAt(i);
+      i++;
+      setTimeout(typeLetter, 100); // Typing speed
+    }
+  }
+
+  typeLetter();
+});
+
