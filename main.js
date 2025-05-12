@@ -137,3 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
   observer.observe(document.body, { attributes: true });
 });
 
+document.getElementById('nav-toggle').addEventListener('click', function () {
+    const navList = document.querySelector('.nav__list');
+    navList.classList.toggle('nav--visible');
+});
