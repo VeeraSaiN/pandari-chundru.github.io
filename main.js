@@ -79,6 +79,9 @@ themeToggle.addEventListener('click', () => {
 
   themeIcon.classList.replace(isDark ? 'bx-moon' : 'bx-sun', isDark ? 'bx-sun' : 'bx-moon');
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+  // Force canvas redraw to update colors
+  draw(); // Call draw immediately to reflect the theme change
 });
 // Show/Hide Back to Top Button
 const backToTopButton = document.getElementById('back-to-top');
@@ -121,6 +124,124 @@ document.addEventListener('DOMContentLoaded', () => {
   // Particles (bokeh-style orbs)
   const particles = [];
   const numParticles = 20; // Number of bokeh orbs
+  for (let i = 0; i < numParticles; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 20 + 10,
+    speedX: (Math.random() - 0.5) * 0.5,
+    speedY: (Math.random() - 0.5) * 0.5,
+    opacity: Math.random() * 0.3 + 0.1,
+  });
+}
+
+// Clouds
+const clouds = [];
+const numClouds = 5;
+for (let i = 0; i < numClouds; i++) {
+  clouds.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height * 0.5,
+    width: Math.random() * 100 + 50,
+    height: Math.random() * 30 + 15,
+    speed: Math.random() * 0.5 + 0.2,
+    opacity: Math.random() * 0.2 + 0.1,
+  });
+}
+
+// Wave effect for underwater ripple/shimmer
+let waveOffset = 0;
+const waveSpeed = 0.02;
+const waveAmplitude = 5;
+
+// Make draw function globally accessible
+function draw() {
+  // Clear canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Check if dark mode is active
+  const isDarkMode = document.body.classList.contains('dark-theme');
+
+  // Draw gradient background with slow transition, adjusted for dark mode
+  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  if (isDarkMode) {
+    gradient.addColorStop(0, `hsl(210, 70%, ${15 + Math.sin(gradientOffset) * 3}%)`);
+    gradient.addColorStop(1, `hsl(210, 50%, ${25 + Math.cos(gradientOffset) * 3}%)`);
+  } else {
+    gradient.addColorStop(0, `hsl(210, 70%, ${30 + Math.sin(gradientOffset) * 5}%)`);
+    gradient.addColorStop(1, `hsl(210, 50%, ${50 + Math.cos(gradientOffset) * 5}%)`);
+  }
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  gradientOffset += gradientSpeed;
+
+  // Draw underwater ripple/shimmer effect
+  for (let x = 0; x < canvas.width; x += 10) {
+    for (let y = 0; y < canvas.height; y += 10) {
+      const wave = Math.sin((x + y + waveOffset) * 0.05) * waveAmplitude;
+      ctx.fillStyle = `rgba(255, 255, 255, ${0.05 + wave * 0.01})`;
+      ctx.fillRect(x, y, 10, 10);
+    }
+  }
+  waveOffset += waveSpeed;
+
+  // Draw sunlight/lens flare at top center
+  const flareX = canvas.width / 2;
+  const flareY = 50;
+  const flareRadius = 100 + Math.sin(flarePulse) * 20;
+  const flareGradient = ctx.createRadialGradient(flareX, flareY, 0, flareX, flareY, flareRadius);
+  if (isDarkMode) {
+    flareGradient.addColorStop(0, `rgba(200, 200, 255, ${flareOpacity})`);
+    flareGradient.addColorStop(1, 'rgba(200, 200, 255, 0)');
+  } else {
+    flareGradient.addColorStop(0, `rgba(255, 255, 255, ${flareOpacity})`);
+    flareGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+  }
+  ctx.fillStyle = flareGradient;
+  ctx.beginPath();
+  ctx.arc(flareX, flareY, flareRadius, 0, Math.PI * 2);
+  ctx.fill();
+  flarePulse += flarePulseSpeed;
+  flareOpacity = 0.7 + Math.sin(flarePulse) * 0.2;
+
+  // Draw floating particles (bokeh orbs)
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fillStyle = isDarkMode
+      ? `rgba(200, 200, 255, ${p.opacity})`
+      : `rgba(255, 255, 255, ${p.opacity})`;
+    ctx.fill();
+
+    // Update particle position
+    p.x += p.speedX;
+    p.y += p.speedY;
+
+    // Bounce off edges or wrap around
+    if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+  });
+
+  // Draw clouds
+  clouds.forEach(c => {
+    ctx.beginPath();
+    ctx.ellipse(c.x, c.y, c.width, c.height, 0, 0, Math.PI * 2);
+    ctx.fillStyle = isDarkMode
+      ? `rgba(150, 150, 200, ${c.opacity})`
+      : `rgba(255, 255, 255, ${c.opacity})`;
+    ctx.fill();
+
+    // Update cloud position
+    c.x += c.speed;
+    if (c.x > canvas.width + c.width) {
+      c.x = -c.width;
+      c.y = Math.random() * canvas.height * 0.5;
+    }
+  });
+
+  requestAnimationFrame(draw);
+}
+draw();
 
   // Create particles
   for (let i = 0; i < numParticles; i++) {
