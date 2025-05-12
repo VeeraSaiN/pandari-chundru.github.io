@@ -1,35 +1,4 @@
-// ====================
-// Responsive Navigation Toggle & Accessibility
-// ====================
 document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.getElementById('nav-toggle');
-  const navList = document.querySelector('#nav-menu .nav__list');
-
-  const toggleMenu = () => {
-    navList.classList.toggle('nav--visible');
-    const isExpanded = navList.classList.contains('nav--visible');
-    toggle.setAttribute('aria-expanded', isExpanded);
-  };
-
-  if (toggle && navList) {
-    toggle.addEventListener('click', toggleMenu);
-    toggle.addEventListener('touchstart', toggleMenu);
-    toggle.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleMenu();
-      }
-    });
-
-    // Close mobile nav on any nav link click
-    document.querySelectorAll('.nav__link').forEach(link => {
-      link.addEventListener('click', () => {
-        navList.classList.remove('nav--visible');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
   // ====================
   // Highlight Active Navigation Link on Scroll
   // ====================
