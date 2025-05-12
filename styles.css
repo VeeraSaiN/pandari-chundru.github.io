@@ -221,7 +221,7 @@ body.dark-theme .container-box:hover {
 }
 
 .home__content .container-box {
-  max-width: 900px; /* or 1000px for even more width */
+  max-width: 1200px; /* or 1000px for even more width */
   margin: 0 auto;
   padding: 3rem;
   background: #fff;
