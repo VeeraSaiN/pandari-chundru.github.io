@@ -225,7 +225,7 @@ body.dark-theme .container-box:hover {
   width: 100%; /* Set to 100% to make it full-width */
   max-width: none;
   margin: 0 auto;
-  padding: 3rem 1rem;
+  padding: 3rem 2rem;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
@@ -737,7 +737,14 @@ body.dark-theme .theme-text {
   .nav__toggle {
     display: block;
     cursor: pointer;
+    z-index: 11;
   }
+}
+.nav__toggle {
+  display: none;
+}
+.header {
+  overflow: visible;
 }
 html, body {
   height: 100%;
