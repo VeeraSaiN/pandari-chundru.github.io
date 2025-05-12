@@ -20,18 +20,14 @@ html {
 
 /* Body Background with Animated Radial Gradient */
 body {
-  background-color: #0a0f2b; /* Dark navy blue */
+  background-color: transparent; /* Let the canvas handle the background */
   color: var(--text-light);
   font-family: var(--font-family);
   line-height: 1.6;
   transition: color 0.3s ease;
   position: relative;
   overflow-x: hidden;
-  background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-  background-size: 100% 100%;
-  animation: gradientZoom 10s infinite ease-in-out;
 }
-
 body.dark-theme {
   color: var(--text-dark);
 }
@@ -48,8 +44,8 @@ body.dark-theme {
     background-size: 100% 100%;
   }
 }
-/* Fullscreen Hyperspace Animation Canvas */
-#hyperspace-bg {
+/* Fullscreen iPhone-Inspired Background Canvas */
+#iphone-bg {
   position: fixed;
   top: 0;
   left: 0;
@@ -65,15 +61,17 @@ body.dark-theme {
   z-index: 1;
 }
 
-/* Optional vignette for depth (same as before) */
+/* Optional vignette for depth */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 50%, rgba(0,0,0,0.4));
+  background: radial-gradient(circle at center, transparent 50%, rgba(0,0,0,0.3));
   pointer-events: none;
   z-index: -2;
 }
+
+
 
 
 /* Theme Toggle Button */
