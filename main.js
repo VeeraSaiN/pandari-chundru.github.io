@@ -94,9 +94,11 @@ window.addEventListener('scroll', () => {
 backToTopButton.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-// Fullscreen Hyperspace Animation
 document.addEventListener('DOMContentLoaded', () => {
-  const canvas = document.getElementById('hyperspace-bg');
+  // ... existing navigation, theme toggle, and back-to-top code ...
+
+  // iPhone Lock Screen-Inspired Background Animation
+  const canvas = document.getElementById('iphone-bg');
   const ctx = canvas.getContext('2d');
 
   // Set canvas size to full screen
@@ -107,52 +109,92 @@ document.addEventListener('DOMContentLoaded', () => {
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  const stars = [];
-  const numStars = 150; // Adjust for more or fewer streaks
+  // Gradient animation state
+  let gradientOffset = 0;
+  const gradientSpeed = 0.001; // Slow transition speed
 
-  // Create star objects for the hyperspace effect
-  for (let i = 0; i < numStars; i++) {
-    stars.push({
-      x: canvas.width / 2,
-      y: canvas.height / 2,
-      z: Math.random() * canvas.width,
-      speed: Math.random() * 5 + 2 // Speed of the streaks
+  // Sunlight/lens flare state
+  let flareOpacity = 1;
+  let flarePulse = 0;
+  const flarePulseSpeed = 0.02;
+
+  // Particles (bokeh-style orbs)
+  const particles = [];
+  const numParticles = 20; // Number of bokeh orbs
+
+  // Create particles
+  for (let i = 0; i < numParticles; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 20 + 10,
+      speedX: (Math.random() - 0.5) * 0.5, // Slow horizontal movement
+      speedY: (Math.random() - 0.5) * 0.5, // Slow vertical movement
+      opacity: Math.random() * 0.3 + 0.1,
     });
   }
 
+  // Wave effect for underwater ripple/shimmer
+  let waveOffset = 0;
+  const waveSpeed = 0.02;
+  const waveAmplitude = 5;
+
   function draw() {
-    // Fade out effect for smooth trails
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw gradient background with slow transition
+    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    gradient.addColorStop(0, `hsl(210, 70%, ${30 + Math.sin(gradientOffset) * 5}%)`); // Top color
+    gradient.addColorStop(1, `hsl(210, 50%, ${50 + Math.cos(gradientOffset) * 5}%)`); // Bottom color
+    ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    gradientOffset += gradientSpeed;
 
-    // Draw streaks in blue to match the image
-    ctx.strokeStyle = 'rgba(0, 150, 255, 0.8)';
-    ctx.lineWidth = 2;
-
-    for (let i = 0; i < stars.length; i++) {
-      const star = stars[i];
-      const perspective = 500 / (500 + star.z);
-
-      // Map 3D position to 2D screen
-      const x = (star.x - canvas.width / 2) * perspective + canvas.width / 2;
-      const y = (star.y - canvas.height / 2) * perspective + canvas.height / 2;
-      const prevX = (star.x - canvas.width / 2) * (500 / (500 + star.z + 10)) + canvas.width / 2;
-      const prevY = (star.y - canvas.height / 2) * (500 / (500 + star.z + 10)) + canvas.height / 2;
-
-      // Draw streak
-      ctx.beginPath();
-      ctx.moveTo(prevX, prevY);
-      ctx.lineTo(x, y);
-      ctx.stroke();
-
-      // Update star position (move outward)
-      star.z -= star.speed;
-      if (star.z <= 0) {
-        star.z = canvas.width;
-        star.x = canvas.width / 2 + (Math.random() - 0.5) * 100; // Small random offset from center
-        star.y = canvas.height / 2 + (Math.random() - 0.5) * 100;
+    // Draw underwater ripple/shimmer effect
+    for (let x = 0; x < canvas.width; x += 10) {
+      for (let y = 0; y < canvas.height; y += 10) {
+        const wave = Math.sin((x + y + waveOffset) * 0.05) * waveAmplitude;
+        ctx.fillStyle = `rgba(255, 255, 255, ${0.05 + wave * 0.01})`;
+        ctx.fillRect(x, y, 10, 10);
       }
     }
+    waveOffset += waveSpeed;
+
+    // Draw sunlight/lens flare at top center
+    const flareX = canvas.width / 2;
+    const flareY = 50; // Near the top
+    const flareRadius = 100 + Math.sin(flarePulse) * 20; // Pulsing size
+    const flareGradient = ctx.createRadialGradient(flareX, flareY, 0, flareX, flareY, flareRadius);
+    flareGradient.addColorStop(0, `rgba(255, 255, 255, ${flareOpacity})`);
+    flareGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+    ctx.fillStyle = flareGradient;
+    ctx.beginPath();
+    ctx.arc(flareX, flareY, flareRadius, 0, Math.PI * 2);
+    ctx.fill();
+    flarePulse += flarePulseSpeed;
+    flareOpacity = 0.7 + Math.sin(flarePulse) * 0.2; // Pulsing opacity
+
+    // Draw floating particles (bokeh orbs)
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+      ctx.fill();
+
+      // Update particle position
+      p.x += p.speedX;
+      p.y += p.speedY;
+
+      // Bounce off edges or wrap around
+      if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+    });
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+});
 
     requestAnimationFrame(draw);
   }
