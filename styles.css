@@ -172,8 +172,7 @@ body.dark-theme .nav__link.active {
 /* Section Layout with Hero Background */
 .section {
   padding: 4rem 2rem;
-  width: 100%;
-  max-width: none;
+  max-width: 1200px;
   margin: 0 auto;
   background: linear-gradient(135deg, rgba(34, 68, 255, 0.1), rgba(255, 255, 255, 0.1));
   position: relative;
@@ -222,10 +221,9 @@ body.dark-theme .container-box:hover {
 }
 
 .home__content .container-box {
-  width: 100%; /* Set to 100% to make it full-width */
-  max-width: none;
+  max-width: 900px; /* or 1000px for even more width */
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 3rem;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
@@ -708,65 +706,27 @@ body.dark-theme .theme-text {
     text-align: center;
   }
 }
-/* Header and Navigation */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  padding: 1rem;
-  background: var(--bg-light);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+@media (max-width: 767px) {
+  .nav__list {
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 80%;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
 
-body.dark-theme .header {
-  background: var(--bg-dark);
-  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
-}
+  .nav--visible .nav__list {
+    display: flex;
+  }
 
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.nav__list {
-  display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
-  list-style: none;
-  transition: all 0.3s ease;
-}
-
-.nav__link {
-  color: var(--text-light);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-body.dark-theme .nav__link {
-  color: var(--text-dark);
-}
-
-.nav__link:hover,
-.nav__link:focus {
-  color: var(--primary-color);
-  transform: scale(1.05);
-}
-
-.nav__link.active {
-  color: var(--primary-color);
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 0.2rem;
-}
-
-body.dark-theme .nav__link.active {
-  color: var(--primary-color);
-  border-bottom: 2px solid var(--primary-color);
+  .nav__toggle {
+    display: block;
+    cursor: pointer;
+  }
 }
 html, body {
   height: 100%;
@@ -781,28 +741,24 @@ html, body {
 .footer {
   margin-top: auto;
   text-align: center;
-  padding: 2rem;
+  padding: 1rem;
   background-color: #f1f1f1;
+}
+.nav__list {
+  transition: all 0.3s ease;
+  z-index: 2; /* Make sure it's above the canvas */
+}
+
+.nav__toggle {
+  z-index: 3;
+}
+.nav__list.nav--visible {
+  display: flex;
+}
+body.dark-theme .nav__link {
+  color: #ffffff; /* or another light color */
 }
 body.dark-theme .footer {
   background-color: #222;
   color: #fff;
-}
-.header {
-  position: fixed; /* instead of sticky */
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  padding: 1rem;
-  background: var(--bg-light);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-body.dark-theme .header {
-  background: var(--bg-dark);
-  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
-}
-.section:first-of-type {
-  padding-top: 6rem; /* adjust based on header height */
 }
