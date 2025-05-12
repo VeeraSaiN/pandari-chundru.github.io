@@ -222,8 +222,9 @@ body.dark-theme .container-box:hover {
 
 .home__content .container-box {
   max-width: 100%; /* Set to 100% to make it full-width */
+  width: 100%;
   margin: 0 auto;
-  padding: 3rem;
+  padding: 3rem 2rem;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
