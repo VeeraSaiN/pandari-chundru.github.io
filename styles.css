@@ -247,8 +247,9 @@ body.dark-theme .home__content .container-box:hover {
 /* Intro Layout (Text Left, Image Right) */
 .home__intro {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   gap: 2rem;
   margin-bottom: 2rem;
 }
@@ -774,6 +775,12 @@ body.dark-theme .footer {
   background-color: #222;
   color: #fff;
 }
-
+@media (max-width: 768px) {
+  .home__intro {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
 
 
