@@ -676,40 +676,6 @@ body.dark-theme .contact__form textarea {
     }
 }
 
-/* Fullscreen Particle Tunnel Visual */
-#particle-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    z-index: -1;
-    perspective: 1000px;
-    transform-style: preserve-3d;
-    pointer-events: none;
-}
-
-.particle {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    width: 2px;
-    height: 2px;
-    transform: translate(-50%, -50%) scale(1);
-    will-change: transform, opacity;
-    transition: transform 0.1s ease-out, opacity 0.1s linear;
-}
-
-/* Optional vignette for depth */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle at center, transparent 50%, rgba(0, 0, 0, 0.4));
-    pointer-events: none;
-    z-index: -2;
-}
 
 /* Light/Dark theme particle compatibility */
 body.dark-theme .particle {
