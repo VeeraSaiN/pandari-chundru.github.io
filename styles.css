@@ -762,3 +762,6 @@ body.dark-theme .footer {
   background-color: #222;
   color: #fff;
 }
+.section:last-of-type {
+  padding-bottom: 2rem;
+}
