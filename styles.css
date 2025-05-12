@@ -35,32 +35,6 @@ body.dark-theme {
   color: var(--text-dark);
 }
 
-/* Fullscreen iPhone-Inspired Background Canvas */
-#iphone-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1; /* Ensure it stays behind content */
-  pointer-events: none; /* Prevent interaction with the canvas */
-}
-
-/* Ensure sections and content stay above the canvas */
-.section, .header {
-  position: relative;
-  z-index: 1;
-}
-
-/* Optional vignette for depth */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, transparent 50%, rgba(0,0,0,0.3));
-  pointer-events: none;
-  z-index: -2;
-}
 
 /* Back to Top Button */
 .back-to-top {
@@ -247,7 +221,9 @@ body.dark-theme .container-box:hover {
 }
 
 .home__content .container-box {
-  padding: 2rem;
+  max-width: 900px; /* or 1000px for even more width */
+  margin: 0 auto;
+  padding: 3rem;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
@@ -756,7 +732,6 @@ html, body {
   height: 100%;
   margin: 0;
 }
-
 .page-container {
   display: flex;
   flex-direction: column;
@@ -766,7 +741,7 @@ html, body {
 .footer {
   margin-top: auto;
   text-align: center;
-  padding: 1em;
+  padding: 1rem;
   background-color: #f1f1f1;
 }
 .nav__list {
