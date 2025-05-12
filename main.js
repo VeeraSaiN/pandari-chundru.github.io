@@ -1,3 +1,5 @@
+/* main.js */
+
 // ====================
 // Responsive Navigation Toggle
 // ====================
@@ -81,8 +83,19 @@ themeToggle.addEventListener('click', () => {
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
 
   // Force canvas redraw to update colors
-  draw(); // Call draw immediately to reflect the theme change
+  draw();
 });
+
+// Observe changes to the dark-theme class on the body
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.attributeName === 'class') {
+      draw(); // Redraw the canvas whenever the class changes
+    }
+  });
+});
+observer.observe(document.body, { attributes: true });
+
 // Show/Hide Back to Top Button
 const backToTopButton = document.getElementById('back-to-top');
 window.addEventListener('scroll', () => {
@@ -97,10 +110,9 @@ window.addEventListener('scroll', () => {
 backToTopButton.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-document.addEventListener('DOMContentLoaded', () => {
-  // ... existing navigation, theme toggle, and back-to-top code ...
 
-  // iPhone Lock Screen-Inspired Background Animation
+// iPhone Lock Screen-Inspired Background Animation
+document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('iphone-bg');
   const ctx = canvas.getContext('2d');
 
@@ -114,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Gradient animation state
   let gradientOffset = 0;
-  const gradientSpeed = 0.001; // Slow transition speed
+  const gradientSpeed = 0.001;
 
   // Sunlight/lens flare state
   let flareOpacity = 1;
@@ -123,136 +135,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Particles (bokeh-style orbs)
   const particles = [];
-  const numParticles = 20; // Number of bokeh orbs
-  for (let i = 0; i < numParticles; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 20 + 10,
-    speedX: (Math.random() - 0.5) * 0.5,
-    speedY: (Math.random() - 0.5) * 0.5,
-    opacity: Math.random() * 0.3 + 0.1,
-  });
-}
-
-// Clouds
-const clouds = [];
-const numClouds = 5;
-for (let i = 0; i < numClouds; i++) {
-  clouds.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height * 0.5,
-    width: Math.random() * 100 + 50,
-    height: Math.random() * 30 + 15,
-    speed: Math.random() * 0.5 + 0.2,
-    opacity: Math.random() * 0.2 + 0.1,
-  });
-}
-
-// Wave effect for underwater ripple/shimmer
-let waveOffset = 0;
-const waveSpeed = 0.02;
-const waveAmplitude = 5;
-
-// Make draw function globally accessible
-function draw() {
-  // Clear canvas
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Check if dark mode is active
-  const isDarkMode = document.body.classList.contains('dark-theme');
-
-  // Draw gradient background with slow transition, adjusted for dark mode
-  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-  if (isDarkMode) {
-    gradient.addColorStop(0, `hsl(210, 70%, ${15 + Math.sin(gradientOffset) * 3}%)`);
-    gradient.addColorStop(1, `hsl(210, 50%, ${25 + Math.cos(gradientOffset) * 3}%)`);
-  } else {
-    gradient.addColorStop(0, `hsl(210, 70%, ${30 + Math.sin(gradientOffset) * 5}%)`);
-    gradient.addColorStop(1, `hsl(210, 50%, ${50 + Math.cos(gradientOffset) * 5}%)`);
-  }
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  gradientOffset += gradientSpeed;
-
-  // Draw underwater ripple/shimmer effect
-  for (let x = 0; x < canvas.width; x += 10) {
-    for (let y = 0; y < canvas.height; y += 10) {
-      const wave = Math.sin((x + y + waveOffset) * 0.05) * waveAmplitude;
-      ctx.fillStyle = `rgba(255, 255, 255, ${0.05 + wave * 0.01})`;
-      ctx.fillRect(x, y, 10, 10);
-    }
-  }
-  waveOffset += waveSpeed;
-
-  // Draw sunlight/lens flare at top center
-  const flareX = canvas.width / 2;
-  const flareY = 50;
-  const flareRadius = 100 + Math.sin(flarePulse) * 20;
-  const flareGradient = ctx.createRadialGradient(flareX, flareY, 0, flareX, flareY, flareRadius);
-  if (isDarkMode) {
-    flareGradient.addColorStop(0, `rgba(200, 200, 255, ${flareOpacity})`);
-    flareGradient.addColorStop(1, 'rgba(200, 200, 255, 0)');
-  } else {
-    flareGradient.addColorStop(0, `rgba(255, 255, 255, ${flareOpacity})`);
-    flareGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-  }
-  ctx.fillStyle = flareGradient;
-  ctx.beginPath();
-  ctx.arc(flareX, flareY, flareRadius, 0, Math.PI * 2);
-  ctx.fill();
-  flarePulse += flarePulseSpeed;
-  flareOpacity = 0.7 + Math.sin(flarePulse) * 0.2;
-
-  // Draw floating particles (bokeh orbs)
-  particles.forEach(p => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-    ctx.fillStyle = isDarkMode
-      ? `rgba(200, 200, 255, ${p.opacity})`
-      : `rgba(255, 255, 255, ${p.opacity})`;
-    ctx.fill();
-
-    // Update particle position
-    p.x += p.speedX;
-    p.y += p.speedY;
-
-    // Bounce off edges or wrap around
-    if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-  });
-
-  // Draw clouds
-  clouds.forEach(c => {
-    ctx.beginPath();
-    ctx.ellipse(c.x, c.y, c.width, c.height, 0, 0, Math.PI * 2);
-    ctx.fillStyle = isDarkMode
-      ? `rgba(150, 150, 200, ${c.opacity})`
-      : `rgba(255, 255, 255, ${c.opacity})`;
-    ctx.fill();
-
-    // Update cloud position
-    c.x += c.speed;
-    if (c.x > canvas.width + c.width) {
-      c.x = -c.width;
-      c.y = Math.random() * canvas.height * 0.5;
-    }
-  });
-
-  requestAnimationFrame(draw);
-}
-draw();
-
-  // Create particles
+  const numParticles = 20;
   for (let i = 0; i < numParticles; i++) {
     particles.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       radius: Math.random() * 20 + 10,
-      speedX: (Math.random() - 0.5) * 0.5, // Slow horizontal movement
-      speedY: (Math.random() - 0.5) * 0.5, // Slow vertical movement
+      speedX: (Math.random() - 0.5) * 0.5,
+      speedY: (Math.random() - 0.5) * 0.5,
       opacity: Math.random() * 0.3 + 0.1,
     });
+  }
+
+  // Clouds (wispy, layered effect)
+  const clouds = [];
+  const numClouds = 8;
+  for (let i = 0; i < numClouds; i++) {
+    clouds.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height * 0.5,
+      speed: Math.random() * 0.3 + 0.1, // Slower movement
+      segments: [],
+    });
+
+    // Create multiple segments for each cloud
+    const numSegments = Math.floor(Math.random() * 3) + 3;
+    for (let j = 0; j < numSegments; j++) {
+      clouds[i].segments.push({
+        offsetX: (Math.random() - 0.5) * 50,
+        offsetY: (Math.random() - 0.5) * 20,
+        width: Math.random() * 80 + 40,
+        height: Math.random() * 30 + 15,
+        opacity: Math.random() * 0.15 + 0.05, // More transparent
+      });
+    }
   }
 
   // Wave effect for underwater ripple/shimmer
@@ -260,14 +176,23 @@ draw();
   const waveSpeed = 0.02;
   const waveAmplitude = 5;
 
+  // Make draw function globally accessible
   function draw() {
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw gradient background with slow transition
+    // Check if dark mode is active
+    const isDarkMode = document.body.classList.contains('dark-theme');
+
+    // Draw gradient background with slow transition, adjusted for dark mode
     const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    gradient.addColorStop(0, `hsl(210, 70%, ${30 + Math.sin(gradientOffset) * 5}%)`); // Top color
-    gradient.addColorStop(1, `hsl(210, 50%, ${50 + Math.cos(gradientOffset) * 5}%)`); // Bottom color
+    if (isDarkMode) {
+      gradient.addColorStop(0, `hsl(210, 70%, ${15 + Math.sin(gradientOffset) * 3}%)`);
+      gradient.addColorStop(1, `hsl(210, 50%, ${25 + Math.cos(gradientOffset) * 3}%)`);
+    } else {
+      gradient.addColorStop(0, `hsl(210, 70%, ${30 + Math.sin(gradientOffset) * 5}%)`);
+      gradient.addColorStop(1, `hsl(210, 50%, ${50 + Math.cos(gradientOffset) * 5}%)`);
+    }
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     gradientOffset += gradientSpeed;
@@ -284,23 +209,30 @@ draw();
 
     // Draw sunlight/lens flare at top center
     const flareX = canvas.width / 2;
-    const flareY = 50; // Near the top
-    const flareRadius = 100 + Math.sin(flarePulse) * 20; // Pulsing size
+    const flareY = 50;
+    const flareRadius = 100 + Math.sin(flarePulse) * 20;
     const flareGradient = ctx.createRadialGradient(flareX, flareY, 0, flareX, flareY, flareRadius);
-    flareGradient.addColorStop(0, `rgba(255, 255, 255, ${flareOpacity})`);
-    flareGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+    if (isDarkMode) {
+      flareGradient.addColorStop(0, `rgba(200, 200, 255, ${flareOpacity})`);
+      flareGradient.addColorStop(1, 'rgba(200, 200, 255, 0)');
+    } else {
+      flareGradient.addColorStop(0, `rgba(255, 255, 255, ${flareOpacity})`);
+      flareGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+    }
     ctx.fillStyle = flareGradient;
     ctx.beginPath();
     ctx.arc(flareX, flareY, flareRadius, 0, Math.PI * 2);
     ctx.fill();
     flarePulse += flarePulseSpeed;
-    flareOpacity = 0.7 + Math.sin(flarePulse) * 0.2; // Pulsing opacity
+    flareOpacity = 0.7 + Math.sin(flarePulse) * 0.2;
 
     // Draw floating particles (bokeh orbs)
     particles.forEach(p => {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+      ctx.fillStyle = isDarkMode
+        ? `rgba(200, 200, 255, ${p.opacity})`
+        : `rgba(255, 255, 255, ${p.opacity})`;
       ctx.fill();
 
       // Update particle position
@@ -312,10 +244,32 @@ draw();
       if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
     });
 
-    requestAnimationFrame(draw);
-  }
-  draw();
-});
+    // Draw clouds
+    clouds.forEach(c => {
+      c.segments.forEach(segment => {
+        ctx.beginPath();
+        ctx.ellipse(
+          c.x + segment.offsetX,
+          c.y + segment.offsetY,
+          segment.width,
+          segment.height,
+          0,
+          0,
+          Math.PI * 2
+        );
+        ctx.fillStyle = isDarkMode
+          ? `rgba(150, 150, 200, ${segment.opacity})`
+          : `rgba(255, 255, 255, ${segment.opacity})`;
+        ctx.fill();
+      });
+
+      // Update cloud position
+      c.x += c.speed;
+      if (c.x > canvas.width + 100) {
+        c.x = -100;
+        c.y = Math.random() * canvas.height * 0.5;
+      }
+    });
 
     requestAnimationFrame(draw);
   }
