@@ -803,4 +803,21 @@ html, body {
   padding: 1em;
   background-color: #f1f1f1;
 }
+.nav__list {
+  transition: all 0.3s ease;
+  z-index: 2; /* Make sure it's above the canvas */
+}
 
+.nav__toggle {
+  z-index: 3;
+}
+.nav__list.nav--visible {
+  display: flex;
+}
+body.dark-theme .nav__link {
+  color: #ffffff; /* or another light color */
+}
+body.dark-theme .footer {
+  background-color: #222;
+  color: #fff;
+}
