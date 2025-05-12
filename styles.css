@@ -172,7 +172,8 @@ body.dark-theme .nav__link.active {
 /* Section Layout with Hero Background */
 .section {
   padding: 4rem 2rem;
-  max-width: 1200px;
+  width: 100%;
+  max-width: none;
   margin: 0 auto;
   background: linear-gradient(135deg, rgba(34, 68, 255, 0.1), rgba(255, 255, 255, 0.1));
   position: relative;
@@ -221,10 +222,10 @@ body.dark-theme .container-box:hover {
 }
 
 .home__content .container-box {
-  max-width: 100%; /* Set to 100% to make it full-width */
-  width: 100%;
+  width: 100%; /* Set to 100% to make it full-width */
+  max-width: none;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 3rem 1rem;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
