@@ -94,63 +94,67 @@ window.addEventListener('scroll', () => {
 backToTopButton.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-// Fullscreen Particle Tunnel Effect - Inspired by RUSTCODE
+// Fullscreen Hyperspace Animation
 document.addEventListener('DOMContentLoaded', () => {
-  const particleBg = document.getElementById('particle-bg');
-  if (!particleBg) return;
+  const canvas = document.getElementById('hyperspace-bg');
+  const ctx = canvas.getContext('2d');
 
-  const particles = [];
-  const numParticles = 150;
+  // Set canvas size to full screen
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
 
-  for (let i = 0; i < numParticles; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.position = 'absolute';
-    particle.style.borderRadius = '50%';
-    particle.style.width = '2px';
-    particle.style.height = '2px';
-    particle.style.left = '50%';
-    particle.style.top = '50%';
-    particle.style.transform = 'translate(-50%, -50%) scale(1)';
-    particleBg.appendChild(particle);
+  const stars = [];
+  const numStars = 150; // Adjust for more or fewer streaks
 
-    particles.push({
-      element: particle,
-      angle: Math.random() * Math.PI * 2,
-      distance: Math.random() * 10,
-      speed: Math.random() * 1.5 + 0.5,
+  // Create star objects for the hyperspace effect
+  for (let i = 0; i < numStars; i++) {
+    stars.push({
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      z: Math.random() * canvas.width,
+      speed: Math.random() * 5 + 2 // Speed of the streaks
     });
   }
 
-  function animateParticles() {
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
+  function draw() {
+    // Fade out effect for smooth trails
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    particles.forEach(p => {
-      p.distance += p.speed;
-      const x = centerX + Math.cos(p.angle) * p.distance;
-      const y = centerY + Math.sin(p.angle) * p.distance;
-      const scale = 0.5 + p.distance / 400;
+    // Draw streaks in blue to match the image
+    ctx.strokeStyle = 'rgba(0, 150, 255, 0.8)';
+    ctx.lineWidth = 2;
 
-      p.element.style.left = `${x}px`;
-      p.element.style.top = `${y}px`;
-      p.element.style.transform = `translate(-50%, -50%) scale(${scale})`;
-      p.element.style.opacity = 1 - p.distance / 600;
+    for (let i = 0; i < stars.length; i++) {
+      const star = stars[i];
+      const perspective = 500 / (500 + star.z);
 
-      if (p.distance > 600) {
-        p.distance = Math.random() * 10;
-        p.angle = Math.random() * Math.PI * 2;
+      // Map 3D position to 2D screen
+      const x = (star.x - canvas.width / 2) * perspective + canvas.width / 2;
+      const y = (star.y - canvas.height / 2) * perspective + canvas.height / 2;
+      const prevX = (star.x - canvas.width / 2) * (500 / (500 + star.z + 10)) + canvas.width / 2;
+      const prevY = (star.y - canvas.height / 2) * (500 / (500 + star.z + 10)) + canvas.height / 2;
+
+      // Draw streak
+      ctx.beginPath();
+      ctx.moveTo(prevX, prevY);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+
+      // Update star position (move outward)
+      star.z -= star.speed;
+      if (star.z <= 0) {
+        star.z = canvas.width;
+        star.x = canvas.width / 2 + (Math.random() - 0.5) * 100; // Small random offset from center
+        star.y = canvas.height / 2 + (Math.random() - 0.5) * 100;
       }
-    });
+    }
 
-    requestAnimationFrame(animateParticles);
+    requestAnimationFrame(draw);
   }
-
-  animateParticles();
-
-  window.addEventListener('resize', () => {
-    particles.forEach(p => {
-      p.distance = Math.random() * 10;
-    });
-  });
+  draw();
 });
