@@ -739,7 +739,7 @@ body:not(.dark-theme) .particle {
     opacity: 1;
   }
 }
-
+/* Theme-aware text */
 .theme-text {
   color: var(--text-light);
 }
@@ -747,7 +747,10 @@ body.dark-theme .theme-text {
   color: var(--text-dark);
 }
 
+/* Blue colored name */
 .name-text {
   color: var(--primary-color);
+  font-weight: 600;
+  white-space: nowrap;
 }
 
