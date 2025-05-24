@@ -22,14 +22,14 @@ html {
 
 /* Body Styles */
 body {
-  background: linear-gradient(135deg, var(--bg-light) 0%, #e6e9ef 100%); /* Subtle gradient inspired by Credly */
-  color: var(--text-light);
-  font-family: var(--font-family);
-  font-size: 1.1rem; /* Slightly larger base font size for readability */
-  line-height: 1.8;
-  transition: background 0.4s ease, color 0.4s ease;
-  position: relative;
-  overflow-x: hidden;
+    background-color: #000; /* Black background to see white lines */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to the top to see the fall clearly */
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 50px; /* Starting space from the top */
+    overflow: hidden; /* Prevent scrollbars if lines go too far */
 }
 
 body.dark-theme {
@@ -774,16 +774,6 @@ body.dark-theme .footer {
 /* Contents of your style.css file */
 
 /* --- Animated Vertical Lines CSS --- */
-body {
-    background-color: #000; /* Black background to see white lines */
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align to the top to see the fall clearly */
-    min-height: 100vh;
-    margin: 0;
-    padding-top: 50px; /* Starting space from the top */
-    overflow: hidden; /* Prevent scrollbars if lines go too far */
-}
 
 .lines-container {
     display: flex;
