@@ -911,3 +911,14 @@ body.dark-theme .theme-text {
   gap: 1rem;
   flex-wrap: wrap;
 }
+/* Light Mode Fix */
+.contact-info strong,
+.contact-link {
+  color: var(--text-light); /* Use dark text in light mode */
+}
+
+/* Dark Mode Override */
+body.dark-theme .contact-info strong,
+body.dark-theme .contact-link {
+  color: var(--text-dark); /* Use light text in dark mode */
+}
