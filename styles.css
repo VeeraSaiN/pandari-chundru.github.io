@@ -780,7 +780,7 @@ body.dark-theme .footer {
   overflow: hidden; /* IMPORTANT: Keeps lines contained */
   position: relative; /* Needed for absolute positioning of lines */
   height: var(--container-height, 150px); /* Default height if not set in HTML */
-  background-color: #ffffff; /* CHANGE this to your page's desired background for this area */
+  background-color: #000000; /* CHANGED: Page background to black */
   margin-bottom: 20px; /* Added for better separation if you have content below */
 }
 
@@ -789,7 +789,7 @@ body.dark-theme .footer {
   left: 0;
   width: 100%; /* Lines span the full width of the container */
   height: var(--line-height, 2px); /* Default thickness if not set on the line itself */
-  background-color: #000000; /* Default line color if not set on the line itself */
+  background-color: #ffffff; /* CHANGED: Default line color to white */
   opacity: 0.7; /* Default opacity */
 
   animation-timing-function: linear; /* Makes the speed constant */
@@ -818,6 +818,8 @@ body.dark-theme .footer {
     transform: translateY(calc(-1 * var(--line-height, 2px))); /* End fully above */
   }
 }
+
+/* --- End of Animated Vertical Lines CSS --- */
 
 /* --- End of Animated Vertical Lines CSS --- */
 
