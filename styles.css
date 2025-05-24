@@ -912,17 +912,19 @@ body.dark-theme .theme-text {
   flex-wrap: wrap;
 }
 /* Light Mode Fix */
-.contact-info strong,
-.contact-link {
-  color: var(--text-light); /* Use dark text in light mode */
-}
+/* Force address text color and visibility */
 .contact-info a.contact-link {
-  color: #24292e !important;       /* Dark text for visibility in light mode */
+  color: #000 !important;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 0.3rem 0.6rem;
+  display: inline-block;
+  border-radius: 6px;
   font-weight: 500;
-  opacity: 1 !important;
-  text-shadow: none !important;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 body.dark-theme .contact-info a.contact-link {
-  color: #e6edf3 !important;       /* Light text for dark mode */
+  color: #fff !important;
+  background-color: rgba(13, 17, 23, 0.85);
 }
