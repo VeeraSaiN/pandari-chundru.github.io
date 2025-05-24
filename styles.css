@@ -916,9 +916,13 @@ body.dark-theme .theme-text {
 .contact-link {
   color: var(--text-light); /* Use dark text in light mode */
 }
+/* Fix for contact section text color in light and dark modes */
+.contact-info strong,
+.contact-info a.contact-link {
+  color: var(--text-light) !important;
+}
 
-/* Dark Mode Override */
 body.dark-theme .contact-info strong,
-body.dark-theme .contact-link {
-  color: var(--text-dark); /* Use light text in dark mode */
+body.dark-theme .contact-info a.contact-link {
+  color: var(--text-dark) !important;
 }
