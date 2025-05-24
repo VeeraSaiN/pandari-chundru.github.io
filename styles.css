@@ -775,46 +775,70 @@ body.dark-theme .footer {
 
 /* --- Animated Vertical Lines CSS --- */
 
-.lines-container {
-    display: flex;
-    flex-direction: column; /* Stack the horizontal lines */
-    align-items: center;   /* Center the lines horizontally */
+.animated-lines-container {
+  width: 100%;
+  overflow: hidden; /* IMPORTANT: Keeps lines contained */
+  position: relative; /* Needed for absolute positioning of lines */
+  height: var(--container-height, 150px); /* Default height if not set in HTML */
+  background-color: #000000; /* Background is black */
+  margin-bottom: 20px;
 }
 
 .line {
-    background-color: white;
-    width: 150px;  /* Width of the horizontal lines */
-    height: 10px;   /* Thickness of the horizontal lines */
-    margin-bottom: 20px; /* Space between individual lines */
-    animation-name: fallAndRise;
-    animation-duration: 3s; /* Duration for one full cycle (fall and rise) */
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out; /* Makes movement smooth */
+  position: absolute;
+  left: 0;
+  width: 100%; /* Lines span the full width of the container */
+  /* height is initially set by --line-height from HTML style, then animated */
+  background-color: #ffffff; /* Lines are pure white */
+  opacity: 1; /* Lines are fully opaque (pure white) */
+
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: expandAndContractWave; /* All lines use this new animation */
+  animation-duration: var(--animation-duration, 10s); /* From HTML style */
+  animation-delay: var(--animation-delay, 0s); /* From HTML style */
 }
 
-/* Stagger the animation for each line */
-.line1 { animation-delay: 0s; }
-.line2 { animation-delay: 0.2s; }
-.line3 { animation-delay: 0.4s; }
-.line4 { animation-delay: 0.6s; }
-.line5 { animation-delay: 0.8s; }
-.line6 { animation-delay: 1.0s; }
-.line7 { animation-delay: 1.2s; }
-.line8 { animation-delay: 1.4s; }
-.line9 { animation-delay: 1.6s; }
-.line10 { animation-delay: 1.8s; } /* Last line starts 1.8s after the first */
-
-
-@keyframes fallAndRise {
-    0% {
-        transform: translateY(0); /* Starting position */
-    }
-    50% {
-        transform: translateY(200px); /* Lowest point of the fall (adjust as needed) */
-    }
-    100% {
-        transform: translateY(0); /* Back to starting position */
-    }
+/*
+  New animation: expandAndContractWave
+  - 0%: Thin line starts above the container.
+  - 20%: Thin line's top edge enters the container.
+  - 40%: Thin line's bottom edge reaches the container's bottom.
+  - 50%: Line expands to fill the entire container (becomes the "big white line"). Its top is at the container's top.
+  - 60%: Holds the "big white line" state briefly.
+  - 80%: Line shrinks back to its original thin height, with its top edge at the container's top. (Shrinking happens as it "moves up").
+  - 100%: Thin line's top edge exits above the container.
+*/
+@keyframes expandAndContractWave {
+  0% {
+    transform: translateY(calc(-1 * var(--line-height))); /* Start fully above */
+    height: var(--line-height);
+  }
+  20% {
+    transform: translateY(0px); /* Top of line at container top */
+    height: var(--line-height);
+  }
+  40% {
+    transform: translateY(calc(var(--container-height) - var(--line-height))); /* Bottom of thin line at container bottom */
+    height: var(--line-height);
+  }
+  50% {
+    transform: translateY(0px); /* Top of expanded line at container top */
+    height: var(--container-height); /* Line fills container */
+  }
+  60% { /* Hold the expanded state */
+    transform: translateY(0px);
+    height: var(--container-height);
+  }
+  80% {
+    transform: translateY(0px); /* Top of line at container top, now shrunk */
+    height: var(--line-height);
+  }
+  100% {
+    transform: translateY(calc(-1 * var(--line-height))); /* End fully above */
+    height: var(--line-height);
+  }
 }
 
-  
+/* --- End of Animated Vertical Lines CSS --- */
+
