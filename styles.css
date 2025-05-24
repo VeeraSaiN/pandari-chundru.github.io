@@ -740,3 +740,84 @@ body.dark-theme .footer {
   background-color: #222;
   color: #fff;
 }
+.animated-lines-container {
+  width: 100%;
+  overflow: hidden; /* Ensures lines don't cause horizontal scrollbars on the page */
+  position: relative; /* Or adjust as per your layout */
+  height: 100px; /* Adjust height to fit your design */
+  background-color: #ffffff; /* Or your page's background color */
+}
+
+.line {
+  position: absolute;
+  left: 0;
+  width: 200%; /* Make lines wider than the container to ensure continuous scroll */
+  height: 2px; /* Default thickness */
+  background-color: #000000; /* Default color - inspired by your image */
+  opacity: 0.7; /* Default opacity */
+  animation-name: scrollLine;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Define the scrolling animation */
+@keyframes scrollLine {
+  0% {
+    transform: translateX(-50%); /* Start with the right half of the line visible */
+  }
+  100% {
+    transform: translateX(0%); /* End with the left half of the line visible, creating illusion of scrolling from right to left */
+  }
+}
+
+/* Style individual lines for variety (thickness, speed, starting position, opacity, color) */
+.line-1 {
+  height: 1px;
+  top: 10px;
+  background-color: #333333;
+  opacity: 0.5;
+  animation-duration: 20s; /* Slower */
+}
+
+.line-2 {
+  height: 3px;
+  top: 30px;
+  background-color: #000000;
+  opacity: 0.8;
+  animation-duration: 15s; /* Faster */
+}
+
+.line-3 {
+  height: 2px;
+  top: 50px;
+  background-color: #555555;
+  opacity: 0.6;
+  animation-duration: 25s;
+  animation-direction: reverse; /* Makes it scroll from left to right */
+}
+
+.line-4 {
+  height: 4px;
+  top: 70px;
+  background-color: #1a1a1a;
+  opacity: 0.9;
+  animation-duration: 12s;
+}
+
+.line-5 {
+  height: 1px;
+  top: 85px;
+  background-color: #cccccc; /* A lighter line */
+  opacity: 0.4;
+  animation-duration: 30s;
+  animation-direction: reverse; /* Makes it scroll from left to right */
+  /* You can also add a delay to the animation-delay property if needed */
+}
+
+/* Responsive adjustments if necessary */
+@media (max-width: 768px) {
+  .animated-lines-container {
+    height: 60px; /* Adjust height for smaller screens */
+  }
+  /* You might want to adjust line positions or reduce the number of lines */
+}
