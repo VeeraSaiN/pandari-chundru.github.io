@@ -1,264 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio of Pandari Naga Veera Sainath Chundru - Data Engineer with AWS, PySpark, Big Data." />
-    <meta name="robots" content="index, follow" />
-    <title>Pandari Naga Veera Sainath Chundru Portfolio</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"
-        onerror="console.error('Boxicons failed to load')" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Pandari Naga Veera Sainath Chundru - Data Engineer with AWS, PySpark, Big Data." />
+  <meta name="robots" content="index, follow" />
+  <title>Pandari Naga Veera Sainath Chundru Portfolio</title>
+
+  <!-- Styles & Fonts -->
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 
 <body>
 
-    <!-- Header and Navigation -->
-    <header class="header" id="header">
-        <nav class="nav" id="nav-menu">
-            <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Toggle navigation" aria-expanded="false">
-                <i class="bx bx-menu"></i>
-            </div>
-            <ul class="nav__list">
-                <li><a href="#home" class="nav__link">Home</a></li>
-                <li><a href="#summary" class="nav__link">Summary</a></li>
-                <li><a href="#skills" class="nav__link">Skills</a></li>
-                <li><a href="#education" class="nav__link">Education</a></li>
-                <li><a href="#internships" class="nav__link">Internships</a></li>
-                <li><a href="#portfolio" class="nav__link">Projects</a></li>
-                <li><a href="#certifications" class="nav__link">Certifications</a></li>
-                <li><a href="#contact" class="nav__link">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Navigation -->
+  <header class="header">
+    <nav class="nav" id="nav-menu">
+      <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Toggle navigation">
+        <i class="bx bx-menu"></i>
+      </div>
+      <ul class="nav__list">
+        <li><a href="#home" class="nav__link">Home</a></li>
+        <li><a href="#summary" class="nav__link">Summary</a></li>
+        <li><a href="#skills" class="nav__link">Skills</a></li>
+        <li><a href="#education" class="nav__link">Education</a></li>
+        <li><a href="#internships" class="nav__link">Internships</a></li>
+        <li><a href="#portfolio" class="nav__link">Projects</a></li>
+        <li><a href="#certifications" class="nav__link">Certifications</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Home Section -->
-    <section class="home section" id="home" data-aos="fade-up">
-        <div class="home__content">
-            <div class="container-box" data-aos="fade-up" data-aos-delay="100">
-                <div class="home__intro">
-                    <div class="home__text" data-aos="fade-right" data-aos-delay="100">
-                        <h1 class="typing-text">
-                            <span class="theme-text">Hi,</span><br />
-                            <span class="theme-text">I am </span><span id="typed-name" class="name-text"></span><br />
-                            <span class="theme-text">Data Nerd</span>
-                        </h1>
-                    </div>
-                    <div class="profile-image-container" data-aos="fade-left" data-aos-delay="200">
-                        <img src="IMG_0589.jpeg" alt="Pandari Chundru" class="home__img" />
-                    </div>
-                </div>
-                <div class="home__buttons">
-                    <a href="#contact" class="button" data-aos="fade-up" data-aos-delay="300">Hire Me</a>
-                    <a href="Pandari Chundru CV.pdf" class="button" style="margin-left: 10px;" target="_blank"
-                        download data-aos="fade-up" data-aos-delay="400">Download CV</a>
-                </div>
-                <div class="social__links">
-                    <a href="mailto:pandarichundru@gmail.com" class="social__icon" data-aos="fade-up"
-                        data-aos-delay="200"><i class="bx bxs-envelope"></i></a>
-                    <a href="https://github.com/pandarichundru" class="social__icon" target="_blank" data-aos="fade-up"
-                        data-aos-delay="400"><i class="bx bxl-github"></i></a>
-                    <a href="https://www.linkedin.com/in/pandari-chundru-200bb2205" class="social__icon" target="_blank"
-                        data-aos="fade-up" data-aos-delay="600"><i class="bx bxl-linkedin"></i></a>
-                </div>
-            </div>
+  <!-- Hero Section -->
+  <section id="home" class="section">
+    <div class="container-box">
+      <div class="home__intro">
+        <div class="home__text">
+          <h1>
+            <span class="theme-text">Hi,</span><br />
+            <span class="theme-text">I am </span><span id="typed-name" class="name-text"></span><br />
+            <span class="theme-text">Data Nerd</span>
+          </h1>
         </div>
-    </section>
-
-    <!-- Summary Section -->
-    <section class="summary section" id="summary" data-aos="fade-up">
-        <div class="container-box" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="section__title" data-aos="fade-up" data-aos-delay="200">Summary</h2>
-            <p data-aos="fade-up" data-aos-delay="300">
-                Results-driven Data Enthusiast with expertise in big data analytics, data visualization, and cloud-based data processing.
-                Proficient in Python, SQL, and PySpark, with a strong foundation in ETL development, data modeling, and statistical analysis.
-                Skilled in leveraging AWS services like Redshift, S3, Databricks, and Lambda to build scalable data pipelines.
-                Experienced in using Tableau and Power BI to create interactive dashboards and reports, enabling data-driven decision-making.
-            </p>
+        <div class="profile-image-container">
+          <img src="IMG_0589.jpeg" alt="Pandari Chundru" class="home__img" />
         </div>
-    </section>
+      </div>
+      <div class="home__buttons">
+        <a href="#contact" class="button">Hire Me</a>
+        <a href="Pandari Chundru CV.pdf" class="button" download>Download CV</a>
+      </div>
+      <div class="social__links">
+        <a href="mailto:pandarichundru@gmail.com" class="social__icon"><i class="bx bxs-envelope"></i></a>
+        <a href="https://github.com/pandarichundru" target="_blank" class="social__icon"><i class="bx bxl-github"></i></a>
+        <a href="https://linkedin.com/in/pandari-chundru-200bb2205" target="_blank" class="social__icon"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Skills Section -->
-    <section class="skills section" id="skills" data-aos="fade-up">
-        <div class="container-box" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="section__title" data-aos="fade-up" data-aos-delay="200">Skills</h2>
-            <ul class="timeline">
-                <li data-aos="fade-up" data-aos-delay="300"><strong>Programming Languages:</strong> Python, SQL, PySpark</li>
-                <li data-aos="fade-up" data-aos-delay="400"><strong>Technologies:</strong> Machine Learning, Deep Learning, Big Data Analytics, Cloud Computing</li>
-                <li data-aos="fade-up" data-aos-delay="500"><strong>Cloud Platforms:</strong> AWS (EC2, S3, RDS, Lambda, CloudFront), Azure</li>
-                <li data-aos="fade-up" data-aos-delay="600"><strong>Tools & Libraries:</strong> Scikit-learn, NumPy, Pandas, Matplotlib, Seaborn, TensorFlow, PyTorch, Power BI, Tableau, MS Excel</li>
-                <li data-aos="fade-up" data-aos-delay="700"><strong>Database Management:</strong> MySQL, SQLite3, Snowflake, Databricks</li>
-                <li data-aos="fade-up" data-aos-delay="800"><strong>Web Technologies:</strong> HTML5, CSS</li>
-                <li data-aos="fade-up" data-aos-delay="900"><strong>Others:</strong> ETL Development, Data Visualization, Statistical Analysis</li>
-            </ul>
+  <!-- Summary -->
+  <section id="summary" class="section">
+    <div class="container-box">
+      <h2 class="section__title">Summary</h2>
+      <p>
+        Results-driven Data Enthusiast with expertise in big data analytics, cloud platforms, and data visualization. Proficient in Python, SQL, PySpark, AWS, and tools like Tableau and Power BI.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <div class="container-box">
+      <h2 class="section__title">Skills</h2>
+      <ul class="timeline">
+        <li><strong>Languages:</strong> Python, SQL, PySpark</li>
+        <li><strong>Technologies:</strong> ML, Big Data, Cloud</li>
+        <li><strong>Cloud:</strong> AWS (EC2, S3, RDS, Lambda), Azure</li>
+        <li><strong>Tools:</strong> Pandas, TensorFlow, Power BI</li>
+        <li><strong>Databases:</strong> MySQL, Databricks, Snowflake</li>
+        <li><strong>Web:</strong> HTML5, CSS</li>
+        <li><strong>Others:</strong> ETL, Data Viz, Statistics</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="section">
+    <div class="container-box">
+      <h2 class="section__title">Education</h2>
+      <ul class="timeline">
+        <li><strong>MSc Computer Science</strong> – UEL, 2023–2025 (Distinction)</li>
+        <li><strong>B.Tech Computer Science</strong> – Swarnandhra, 2018–2022 (Distinction)</li>
+        <li><strong>Intermediate (M.P.C)</strong> – Sasi College, 2018 (95.2%)</li>
+        <li><strong>S.S.C</strong> – Roots School, 2016 (9.5 CGPA)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Internships -->
+  <section id="internships" class="section">
+    <div class="container-box">
+      <h2 class="section__title">Internships</h2>
+      <ul class="timeline">
+
+        <li>
+          <strong>IT Support Intern – University of East London</strong> (Jun 2024 – Jan 2025) – London, UK
+          <a href="https://drive.google.com/file/d/1T6I5TaLp-OdKFP9ZGbfcJguycBvPblOn/view?usp=drivesdk" target="_blank" class="cert__link">View Certificate</a>
+          <ul class="internship-details">
+            <li>Troubleshot hardware/software issues</li>
+            <li>Optimized helpdesk workflows</li>
+            <li>Automated manual data tasks</li>
+          </ul>
+        </li>
+
+        <li>
+          <strong>AWS Cloud Data Engineer – Cognizant</strong> (Mar 2022 – Aug 2022) – Hyderabad, India
+          <a href="https://drive.google.com/file/d/1dYFt7A93mL3bY9ihxOfDNdomRK7MS4fi/view?usp=drivesdk" target="_blank" class="cert__link">View Certificate</a>
+          <ul class="internship-details">
+            <li>Built AWS infrastructure with VPC, EC2, RDS</li>
+            <li>Enhanced security with Bastion hosts</li>
+            <li>Completed Databricks certification</li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="portfolio" class="section">
+    <div class="container-box">
+      <h2 class="section__title">Projects</h2>
+      <div class="portfolio__container">
+        <div class="portfolio__item">
+          <h3>Brain Tumor Classification</h3>
+          <p>Built CNN model with EfficientNetB0 achieving 95% accuracy</p>
+          <a href="https://github.com/pandarichundru/Brain-Tumor-" target="_blank" class="button">View</a>
         </div>
-    </section>
-
-    <!-- Education Section -->
-    <section class="education section" id="education" data-aos="fade-up">
-        <div class="container-box">
-            <h2 class="section__title">Education</h2>
-            <ul class="timeline">
-                <li data-aos="fade-up" data-aos-delay="100"><strong>MSc Computer Science with Industrial Placement</strong> – UEL (Distinction) Jan’23 – Jan’25, London, UK</li>
-                <li data-aos="fade-up" data-aos-delay="200"><strong>B.Tech Computer Science</strong> – Swarnandhra College (Distinction) Jun’18 – May’22, Narsapuram, India</li>
-                <li data-aos="fade-up" data-aos-delay="300"><strong>Intermediate (M.P.C)</strong> – Sasi Junior College, Velivennu, 2018, 95.2%</li>
-                <li data-aos="fade-up" data-aos-delay="400"><strong>S.S.C</strong> – Roots School of Essential Faculties, Tanuku, 2016, 9.5 CGPA</li>
-            </ul>
+        <div class="portfolio__item">
+          <h3>Cloud Movie Streaming App</h3>
+          <p>Developed on AWS with S3, EC2, RDS, CloudFront</p>
+          <a href="https://drive.google.com/file/d/1TVKOP7DoWHsD4o2rYQlDXdDZbi4LFo8r/view" target="_blank" class="button">View</a>
         </div>
-    </section>
-
-    <!-- Internships Section -->
-    <section class="experience section" id="internships" data-aos="fade-up">
-        <div class="container-box" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="section__title" data-aos="fade-up" data-aos-delay="200">Internships</h2>
-            <ul class="timeline">
-                <li data-aos="fade-up" data-aos-delay="300">
-                    <strong>IT Support Intern, University of East London (Placement Year)</strong> |
-                    <a href="https://drive.google.com/file/d/1T6I5TaLp-OdKFP9ZGbfcJguycBvPblOn/view?usp=drivesdk"
-                        class="cert__link" target="_blank" rel="noopener noreferrer"><span class="link-icon">🔗</span></a>
-                    Jun’24 – Jan’25 • London, UK
-                    <ul class="internship-details">
-                        <li>Provided technical support by troubleshooting hardware/software issues...</li>
-                        <li>Implemented efficient ticketing systems...</li>
-                        <li>Automated repetitive data tasks, improving accuracy and efficiency...</li>
-                    </ul>
-                </li>
-                <li data-aos="fade-up" data-aos-delay="400">
-                    <strong>AWS Cloud Data Engineer Intern, Cognizant</strong> |
-                    <a href="https://drive.google.com/file/d/1dYFt7A93mL3bY9ihxOfDNdomRK7MS4fi/view?usp=drivesdk"
-                        class="cert__link" target="_blank" rel="noopener noreferrer"><span class="link-icon">🔗</span></a>
-                    Mar’22 – Aug’22 • Hyderabad, India
-                    <ul class="internship-details">
-                        <li>Designed secure AWS infrastructure with VPCs, RDS, EC2, and more...</li>
-                        <li>Implemented Bastion hosts and secured networking...</li>
-                        <li>Completed Databricks certification...</li>
-                    </ul>
-                </li>
-            </ul>
+        <div class="portfolio__item">
+          <h3>Big Data Log Analytics</h3>
+          <p>Used Spark & PySpark to analyze unstructured web logs</p>
+          <a href="https://github.com/pandarichundru/spark-dataframe-rdd-analytics" target="_blank" class="button">View</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Projects Section -->
-    <section class="portfolio section" id="portfolio" data-aos="fade-up">
-        <div class="container-box">
-            <h2 class="section__title">Projects</h2>
-            <div class="portfolio__container">
-                <div class="portfolio__item" data-aos="fade-up" data-aos-delay="100">
-                    <h3>Classification of Brain Tumour</h3>
-                    <p>Built a deep learning-based brain tumor classification system using CNNs and EfficientNetB0 with MRI data; achieved 95%+ accuracy using TensorFlow and Keras.</p>
-                    <a href="https://github.com/pandarichundru/Brain-Tumor-" class="button" target="_blank">View Project</a>
-                </div>
-                <div class="portfolio__item" data-aos="fade-up" data-aos-delay="200">
-                    <h3>Cloud-Based Movie Streaming Application</h3>
-                    <p>Built AWS-based movie streaming platform using EC2, S3, RDS, CloudFront, API Gateway</p>
-                    <a href="https://drive.google.com/file/d/1TVKOP7DoWHsD4o2rYQlDXdDZbi4LFo8r/view?usp=sharing" class="button" target="_blank">View Project</a>
-                </div>
-                <div class="portfolio__item" data-aos="fade-up" data-aos-delay="300">
-                    <h3>Big Data Analysis</h3>
-                    <p>Analyzed unstructured web logs using Apache Spark, PySpark SQL, and visualized trends using matplotlib/seaborn</p>
-                    <a href="https://github.com/pandarichundru/spark-dataframe-rdd-analytics" class="button" target="_blank">View Project</a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Certifications -->
+  <section id="certifications" class="section">
+    <div class="container-box">
+      <h2 class="section__title">Certifications</h2>
+      <ul class="timeline">
+        <li>
+          <strong>AWS Cloud Practitioner</strong> –
+          <a href="https://drive.google.com/file/d/1ljBN5y-plLHYtH7MgDF-cW3y5qxHjy61/view?usp=drivesdk" target="_blank" class="cert__link">View</a>
+        </li>
+        <li>
+          <strong>AWS ML Foundations</strong> –
+          <a href="https://www.credly.com/badges/6fd6ced7-ac10-4502-8cd5-d7f9eac92304/public_url" target="_blank" class="cert__link">View</a>
+        </li>
+        <li>
+          <strong>Data Engineering with Databricks</strong> –
+          <a href="https://drive.google.com/file/d/1KNXkySbuZST0RHrDJxtWn5DuWp5Yvzk2/view?usp=sharing" target="_blank" class="cert__link">View</a>
+        </li>
+        <li>
+          <strong>AWS Cloud Virtual Internship</strong> –
+          <a href="https://drive.google.com/file/d/1OhETfPQfhE6TDcdvIDToCfYtQi42aYH1/view?usp=sharing" target="_blank" class="cert__link">View</a>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Certifications Section -->
-    <section class="certifications section" id="certifications" data-aos="fade-up">
-        <div class="container-box">
-            <h2 class="section__title">Certifications</h2>
-            <ul class="timeline">
-                <li data-aos="fade-up" data-aos-delay="100">
-                    <strong>
-                        AWS Cloud Practitioner
-                        <a href="https://drive.google.com/file/d/1ljBN5y-plLHYtH7MgDF-cW3y5qxHjy61/view?usp=drivesdk"
-                            class="cert__link" target="_blank" rel="noopener noreferrer"><span class="link-icon">🔗</span></a>
-                    </strong>
-                </li>
-                <li data-aos="fade-up" data-aos-delay="200">
-                    <strong>
-                        AWS Academy Machine Learning Foundations
-                        <a href="https://www.credly.com/badges/6fd6ced7-ac10-4502-8cd5-d7f9eac92304/public_url"
-                            class="cert__link" target="_blank" rel="noopener noreferrer"><span class="link-icon">🔗</span></a>
-                    </strong>
-                </li>
-                <li data-aos="fade-up" data-aos-delay="300">
-                    <strong>
-                        Data Engineering with Databricks
-                        <a href="https://drive.google.com/file/d/1KNXkySbuZST0RHrDJxtWn5DuWp5Yvzk2/view?usp=sharing"
-                            class="cert__link" target="_blank" rel="noopener noreferrer"><span class="link-icon">🔗</span></a>
-                    </strong>
-                </li>
-                <li data-aos="fade-up" data-aos-delay="400">
-                    <strong>
-                        AWS Cloud Virtual Internship Program
-                        <a href="https://drive.google.com/file/d/1OhETfPQfhE6TDcdvIDToCfYtQi42aYH1/view?usp=sharing"
-                            class="cert__link" target="_blank" rel="noopener noreferrer"><span class="link-icon">🔗</span></a>
-                    </strong>
-                </li>
-            </ul>
-        </div>
-    </section>
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container-box contact-container">
+      <div class="contact-info">
+        <h2>Contact Me</h2>
+        <p><strong>Email:</strong><br /><a href="mailto:pandarichundru@gmail.com" class="contact-link">pandarichundru@gmail.com</a></p>
+        <p><strong>Phone:</strong><br /><a href="tel:+917989076668" class="contact-link">+91 79890 76668</a></p>
+        <p><strong>Address:</strong><br />3-95, Satyanarayana Swamy Temple St, Velpuru, Tanuku, India – 534222</p>
+      </div>
+      <form action="https://formspree.io/f/mjkwrbqy" method="POST" class="contact__form">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="button">Send</button>
+      </form>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section class="contact section" id="contact" data-aos="fade-up">
-        <div class="container-box contact-container">
-            <div class="contact-info" data-aos="fade-up" data-aos-delay="100">
-                <h2 class="section__title">Contact Me</h2>
-                <p><strong>Address:</strong><br />
-                    <a href="https://maps.google.com?q=3-95,+Satyanarayana+Swamy+Temple+Street,+Velpuru,+Tanuku,+Andhra+Pradesh,+India+534222"
-                        class="contact-link" target="_blank" data-aos="fade-up" data-aos-delay="200">
-                        3-95, Satyanarayana Swamy Temple Street,<br />
-                        Velpuru, Tanuku, Andhra Pradesh, India – 534222
-                    </a>
-                </p>
-                <p><strong>Phone:</strong><br />
-                    <a href="tel:+917989076668" class="contact-link" data-aos="fade-up" data-aos-delay="300">
-                        +91 79890 76668
-                    </a>
-                </p>
-                <p><strong>Email:</strong><br />
-                    <a href="mailto:pandarichundru@gmail.com" class="contact-link" data-aos="fade-up"
-                        data-aos-delay="400">
-                        pandarichundru@gmail.com
-                    </a>
-                </p>
-            </div>
-
-            <!-- Contact Form -->
-            <form action="https://formspree.io/f/mjkwrbqy" method="POST" class="contact__form" data-aos="fade-up"
-                data-aos-delay="500">
-                <input type="text" name="name" placeholder="Your Name" required />
-                <input type="email" name="email" placeholder="Your Email" required />
-                <input type="text" name="subject" placeholder="Subject" />
-                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit" class="button">Send</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Theme Toggle Button -->
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <i class="bx bx-moon" id="theme-icon"></i>
-    </button>
-
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
-        <i class="bx bx-chevron-up"></i>
-    </button>
-
-    <footer class="footer">
+  <!-- Footer -->
+  <footer class="footer">
     <p>© 2025 Pandari Chundru. All rights reserved.</p>
+  </footer>
 
-    <!-- Scripts -->
-    <script src="main.js" defer></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000 });
-    </script>
+  <!-- Theme & Scroll Buttons -->
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="bx bx-moon" id="theme-icon"></i></button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="bx bx-chevron-up"></i></button>
+
+  <!-- Scripts -->
+  <script src="main.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 1000 });</script>
 </body>
-
 </html>
-
