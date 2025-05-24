@@ -916,13 +916,13 @@ body.dark-theme .theme-text {
 .contact-link {
   color: var(--text-light); /* Use dark text in light mode */
 }
-/* Fix for contact section text color in light and dark modes */
-.contact-info strong,
 .contact-info a.contact-link {
-  color: var(--text-light) !important;
+  color: #24292e !important;       /* Dark text for visibility in light mode */
+  font-weight: 500;
+  opacity: 1 !important;
+  text-shadow: none !important;
 }
 
-body.dark-theme .contact-info strong,
 body.dark-theme .contact-info a.contact-link {
-  color: var(--text-dark) !important;
+  color: #e6edf3 !important;       /* Light text for dark mode */
 }
