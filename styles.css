@@ -24,11 +24,15 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: var(--font-family);
-  background: var(--bg-gradient-light);
-  color: var(--text-light);
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at center, #dceeff 0%, #e5f2ff 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow-x: hidden;
-  transition: var(--transition);
 }
 body.dark-theme {
   background: var(--bg-gradient-dark);
@@ -361,17 +365,15 @@ body.dark-theme .footer {
   }
 }
 .hero-section {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle at center, #d0e7ff 0%, #f0f4ff 100%);
+  width: 100%;
+  height: 100%;
   text-align: center;
   padding: 2rem;
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
 .hero-container {
   max-width: 900px;
   margin: 0 auto;
