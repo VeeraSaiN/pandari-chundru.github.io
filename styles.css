@@ -774,50 +774,57 @@ body.dark-theme .footer {
 /* Contents of your style.css file */
 
 /* --- Animated Vertical Lines CSS --- */
-.animated-lines-container {
-  width: 100%;
-  overflow: hidden; /* IMPORTANT: Keeps lines contained */
-  position: relative; /* Needed for absolute positioning of lines */
-  height: var(--container-height, 150px); /* Default height if not set in HTML */
-  background-color: #000000; /* CHANGED: Page background to black */
-  margin-bottom: 20px; /* Added for better separation if you have content below */
+body {
+    background-color: #000; /* Black background to see white lines */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to the top to see the fall clearly */
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 50px; /* Starting space from the top */
+    overflow: hidden; /* Prevent scrollbars if lines go too far */
+}
+
+.lines-container {
+    display: flex;
+    flex-direction: column; /* Stack the horizontal lines */
+    align-items: center;   /* Center the lines horizontally */
 }
 
 .line {
-  position: absolute;
-  left: 0;
-  width: 100%; /* Lines span the full width of the container */
-  height: var(--line-height, 2px); /* Default thickness if not set on the line itself */
-  background-color: #ffffff; /* CHANGED: Default line color to white */
-  opacity: 1; /* CHANGED: Increased opacity to 1 for brighter white */
-
-  animation-timing-function: linear; /* Makes the speed constant */
-  animation-iteration-count: infinite; /* Loop forever */
-  animation-name: moveDown; /* Default animation is moving down */
-  animation-duration: var(--animation-duration, 10s); /* Default speed if not set on the line */
-  animation-delay: var(--animation-delay, 0s); /* Default delay if not set on the line */
+    background-color: white;
+    width: 150px;  /* Width of the horizontal lines */
+    height: 10px;   /* Thickness of the horizontal lines */
+    margin-bottom: 20px; /* Space between individual lines */
+    animation-name: fallAndRise;
+    animation-duration: 3s; /* Duration for one full cycle (fall and rise) */
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out; /* Makes movement smooth */
 }
 
-/* Animation for lines moving DOWNWARDS */
-@keyframes moveDown {
-  0% {
-    transform: translateY(calc(-1 * var(--line-height, 2px))); /* Start fully above */
-  }
-  100% {
-    transform: translateY(var(--container-height, 150px)); /* End fully below */
-  }
+/* Stagger the animation for each line */
+.line1 { animation-delay: 0s; }
+.line2 { animation-delay: 0.2s; }
+.line3 { animation-delay: 0.4s; }
+.line4 { animation-delay: 0.6s; }
+.line5 { animation-delay: 0.8s; }
+.line6 { animation-delay: 1.0s; }
+.line7 { animation-delay: 1.2s; }
+.line8 { animation-delay: 1.4s; }
+.line9 { animation-delay: 1.6s; }
+.line10 { animation-delay: 1.8s; } /* Last line starts 1.8s after the first */
+
+
+@keyframes fallAndRise {
+    0% {
+        transform: translateY(0); /* Starting position */
+    }
+    50% {
+        transform: translateY(200px); /* Lowest point of the fall (adjust as needed) */
+    }
+    100% {
+        transform: translateY(0); /* Back to starting position */
+    }
 }
 
-/* Animation for lines moving UPWARDS */
-@keyframes moveUp {
-  0% {
-    transform: translateY(var(--container-height, 150px)); /* Start fully below */
-  }
-  100% {
-    transform: translateY(calc(-1 * var(--line-height, 2px))); /* End fully above */
-  }
-}
-
-/* --- End of Animated Vertical Lines CSS --- */
-
-    
+  
