@@ -773,45 +773,52 @@ body.dark-theme .footer {
 
 /* Contents of your style.css file */
 
+/* --- Animated Vertical Lines CSS --- */
+
 .animated-lines-container {
   width: 100%;
-  height: var(--container-height, 150px);
-  position: relative;
-  overflow: hidden;
-  background-color: #000; /* You can change this to match your design */
+  overflow: hidden; /* IMPORTANT: Keeps lines contained */
+  position: relative; /* Needed for absolute positioning of lines */
+  height: var(--container-height, 150px); /* Default height if not set in HTML */
+  background-color: #ffffff; /* CHANGE this to your page's desired background for this area */
+  margin-bottom: 20px; /* Added for better separation if you have content below */
 }
 
 .line {
   position: absolute;
   left: 0;
-  width: 100%;
-  height: var(--line-height, 2px);
-  background-color: var(--line-bg-color, #fff); /* This color will be used by currentColor for the shadow */
-  opacity: var(--line-opacity, 0.7);
-  animation: moveAndPulse var(--animation-duration, 10s) linear infinite;
-  animation-delay: var(--animation-delay, 0s);
-  box-shadow: 0 0 8px currentColor; /* Added glow/shadow effect */
+  width: 100%; /* Lines span the full width of the container */
+  height: var(--line-height, 2px); /* Default thickness if not set on the line itself */
+  background-color: #000000; /* Default line color if not set on the line itself */
+  opacity: 0.7; /* Default opacity */
+
+  animation-timing-function: linear; /* Makes the speed constant */
+  animation-iteration-count: infinite; /* Loop forever */
+  animation-name: moveDown; /* Default animation is moving down */
+  animation-duration: var(--animation-duration, 10s); /* Default speed if not set on the line */
+  animation-delay: var(--animation-delay, 0s); /* Default delay if not set on the line */
 }
 
-@keyframes moveAndPulse {
+/* Animation for lines moving DOWNWARDS */
+@keyframes moveDown {
   0% {
-    transform: translateY(100%) scaleX(0.5); /* translateY is % of line's own height */
-    opacity: 0.2;
-  }
-  25% {
-    transform: translateY(50%) scaleX(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translateY(0%) scaleX(1.5);
-    opacity: 0.8;
-  }
-  75% {
-    transform: translateY(-50%) scaleX(1);
-    opacity: 0.5;
+    transform: translateY(calc(-1 * var(--line-height, 2px))); /* Start fully above */
   }
   100% {
-    transform: translateY(-100%) scaleX(0.5);
-    opacity: 0.2;
+    transform: translateY(var(--container-height, 150px)); /* End fully below */
   }
 }
+
+/* Animation for lines moving UPWARDS */
+@keyframes moveUp {
+  0% {
+    transform: translateY(var(--container-height, 150px)); /* Start fully below */
+  }
+  100% {
+    transform: translateY(calc(-1 * var(--line-height, 2px))); /* End fully above */
+  }
+}
+
+/* --- End of Animated Vertical Lines CSS --- */
+
+    
