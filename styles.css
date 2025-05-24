@@ -770,72 +770,48 @@ body.dark-theme .footer {
   }
 }
 
-/* Style individual lines for variety (thickness, speed, starting position, opacity, color) */
-/* --- CSS for Animated Vertical Lines --- */
+
+/* Contents of your style.css file */
 
 .animated-lines-container {
   width: 100%;
-  overflow: hidden; /* This is crucial to hide lines outside the boundary */
-  position: relative; /* Establishes a positioning context for the lines */
-  height: var(--container-height, 150px); /* Sets the visible height of the animation area.
-                                             You define --container-height in the HTML.
-                                             150px is a fallback if it's not defined. */
-  background-color: #ffffff; /* Default background for the animation area.
-                                 CHANGE this to match your page's background if needed. */
+  height: var(--container-height, 150px);
+  position: relative;
+  overflow: hidden;
+  background-color: #000; /* You can change this to match your design */
 }
 
 .line {
-  position: absolute; /* Allows lines to be positioned precisely and overlap */
+  position: absolute;
   left: 0;
-  width: 100%; /* Makes lines span the full width of the container */
-
-  /* Properties below are customized per line using inline styles in the HTML,
-     with fallback defaults here if not specified. */
-  height: var(--line-height, 2px);         /* Thickness of the line */
-  background-color: var(--line-bg-color, #000000); /* Color of the line, if not set in HTML style */
-  opacity: var(--line-opacity, 0.7);       /* Transparency of the line, if not set in HTML style */
-
-  /* Animation properties */
-  animation-timing-function: linear;       /* Ensures constant speed throughout the animation */
-  animation-iteration-count: infinite;     /* Makes the animation loop forever */
-  animation-name: moveDown;                /* Default animation; can be overridden to 'moveUp' */
-  animation-duration: var(--animation-duration, 10s); /* Speed of the animation */
-  animation-delay: var(--animation-delay, 0s);        /* Optional delay for staggering line starts */
+  width: 100%;
+  height: var(--line-height, 2px);
+  background-color: var(--line-bg-color, #fff); /* This color will be used by currentColor for the shadow */
+  opacity: var(--line-opacity, 0.7);
+  animation: moveAndPulse var(--animation-duration, 10s) linear infinite;
+  animation-delay: var(--animation-delay, 0s);
+  box-shadow: 0 0 8px currentColor; /* Added glow/shadow effect */
 }
 
-/* Keyframes for lines moving DOWNWARDS */
-@keyframes moveDown {
+@keyframes moveAndPulse {
   0% {
-    /* Starts the line with its top edge just above the container's visible area */
-    transform: translateY(calc(-1 * var(--line-height, 2px)));
+    transform: translateY(100%) scaleX(0.5); /* translateY is % of line's own height */
+    opacity: 0.2;
+  }
+  25% {
+    transform: translateY(50%) scaleX(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(0%) scaleX(1.5);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-50%) scaleX(1);
+    opacity: 0.5;
   }
   100% {
-    /* Moves the line so its top edge is at the bottom of the container (it has fully passed) */
-    transform: translateY(var(--container-height, 150px));
+    transform: translateY(-100%) scaleX(0.5);
+    opacity: 0.2;
   }
 }
-
-/* Keyframes for lines moving UPWARDS */
-@keyframes moveUp {
-  0% {
-    /* Starts the line with its top edge at the bottom of the container */
-    transform: translateY(var(--container-height, 150px));
-  }
-  100% {
-    /* Moves the line so its top edge is just above the container's visible area */
-    transform: translateY(calc(-1 * var(--line-height, 2px)));
-  }
-}
-
-/* Optional: Responsive adjustments if needed */
-@media (max-width: 768px) {
-  .animated-lines-container {
-    /* Example: you might want a smaller animation area on small screens */
-    /* height: var(--container-height-mobile, 100px); */
-    /* Note: If you use a different variable like --container-height-mobile,
-       you'd need to ensure it's defined or adjust the main --container-height
-       via JavaScript or have a separate container for mobile if pure CSS.
-       For simplicity, the current setup uses one --container-height. */
-  }
-}
-/* --- End of CSS for Animated Vertical Lines --- */
